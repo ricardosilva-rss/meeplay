@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_141750) do
+ActiveRecord::Schema.define(version: 2022_05_30_153621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_141750) do
     t.bigint "boardgame_id", null: false
     t.date "start_date"
     t.integer "players_wanted"
-    t.boolean "user_is_owner"
+    t.boolean "user_is_owner", default: true
     t.string "address"
     t.text "description"
     t.string "name"
