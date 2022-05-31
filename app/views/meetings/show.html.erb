@@ -1,21 +1,23 @@
-<h1>Meeting: <%= ${@meeting.name} %></h1>
+<h1>meeting: <%= @meeting.name %></h1>
 
-<%= @meeting.boardgame.name %>
+<p>boardgame: <%= @meeting.boardgame.name %></p>
 
 <% # TODO: add boardgame photo %>
 
-<p>Created by: <%= @meeting.user.name %></p>
+<p>created by: <%= @user.name %></p>
 <% if @meeting.user_is_owner %>
   <p><%= 'I own the boardgame' %></p>
 <% else %>
   <p><%= "I don't own the boardgame" %></p>
 <% end %>
 
-<p>Date and time: <%= @meeting.start_date %></p>
-<p>Address: <%= @meeting.address %></p>
+<p>date and time: <%= @meeting.start_date %></p>
+<p>address: <%= @meeting.address %></p>
 
-<p>Comments: <%= @meeting.description %></p>
+<p>comments: <%= @meeting.description %></p>
 
-<p>Waiting for: <%= (@meeting.players_wanted - (@meeting.user_meetings.count - 1)) %></p>
+<p>waiting for: <%= (@meeting.players_wanted - (@meeting.user_meetings.count - 1)) %>/<%= @meeting.players_wanted %></p>
 
 <% # see also players already joined. don't know how yet. %>
+
+<%= link_to 'Back', meetings_path %>
