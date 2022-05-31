@@ -1,7 +1,11 @@
 class MeetingsController < ApplicationController
+  before_action :set_meeting, only: [ :show ]
+
   def index
     @meetings = policy_scope(Meeting).order(created_at: :desc)
   end
+
+  def show; end
 
   def new
     @meeting = Meeting.new
@@ -23,6 +27,11 @@ class MeetingsController < ApplicationController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:name, :boardgame_id.name, :start_date, :players_wanted, :user_is_owner, :address, :description)
+    params.require(:meeting).permit(:name, :boardgame_id.name, :start_date, :start_time, :players_wanted, :user_is_owner, :address, :description)
+  end
+
+  def set_meeting
+    @meeting = Meeting.find(params[:id])
+    authorize @meeting
   end
 end
