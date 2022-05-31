@@ -5,7 +5,7 @@
 <%= simple_form_for(@meeting) do |f| %>
   <%= f.input :name %>
   <% # add default boardgame.name %>
-  <%= f.input :boardgame %>
+  <%= f.input :boardgame, collection: Meeting::BOARDGAMELIST %>
   <% # make it a list from api and update list as you write %>
   <%= f.input :start_date %>
   <%# <%= f.input :start_time %>

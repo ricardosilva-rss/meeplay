@@ -14,7 +14,7 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.new(meeting_params)
-    @meeting.user_id.name = current_user
+    @meeting.user_id = current_user
     authorize @meeting
 
     if @meeting.save
