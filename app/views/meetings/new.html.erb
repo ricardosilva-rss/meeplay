@@ -1,0 +1,19 @@
+<h1>New meeting</h1>
+
+<%# <%= render 'form', booking: @booking %>
+
+<%= simple_form_for(@meeting) do |f| %>
+  <%= f.input :name %>
+  <% # add default boardgame.name %>
+  <%= f.input :boardgame %>
+  <% # make it a list from api and update list as you write %>
+  <%= f.input :start_date %>
+  <%# <%= f.input :start_time %>
+  <%= f.input :address %>
+  <% # make it a list from gem and update list as you write %>
+  <%= f.input :players_wanted, collection: 1..10 %>
+  <% # should actually be updated to only show the max players of game %>
+  <%= f.input :user_is_owner %>
+  <%= f.input :description, label: "Comments" %>
+  <%= f.submit %>
+<% end %>
