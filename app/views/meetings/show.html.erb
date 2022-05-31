@@ -1,5 +1,8 @@
 <h1>Meeting: <%= ${@meeting.name} %></h1>
 
+<%= @meeting.user.name %>
+<%= @meeting.user_is_owner %>
+
 <%= @meeting.boardgame.name %>
 <%= @meeting.start_date %>
 <%= @meeting.players_wanted %>
@@ -7,7 +10,5 @@
 <%= @meeting.address %>
 <%= @meeting.description %>
 
-<%= @meeting.user.name %>
-<%= @meeting.user_is_owner %>
 
-<% # add players already joined %>
+<% # see also players already joined. don't know how yet. %>
