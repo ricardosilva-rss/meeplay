@@ -2,7 +2,7 @@
 
 <%= @meeting.boardgame.name %>
 
-<%= @meeting.boardgame.foto %>
+<% # TODO: add boardgame photo %>
 
 <p>Created by: <%= @meeting.user.name %></p>
 <% if @meeting.user_is_owner %>
@@ -16,7 +16,6 @@
 
 <p>Comments: <%= @meeting.description %></p>
 
-<p>Waiting for: x/<%= @meeting.players_wanted %></p>
-<% # need to work on decreasing x according to number of players already joined %>
+<p>Waiting for: <%= (@meeting.players_wanted - (@meeting.user_meetings.count - 1)) %></p>
 
 <% # see also players already joined. don't know how yet. %>
