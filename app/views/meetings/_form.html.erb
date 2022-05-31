@@ -9,7 +9,7 @@
   <% # make it a list from gem and update list as you write %>
   <%= f.input :players_wanted, collection: 1..10 %>
   <% # should actually be updated to only show the max players of game %>
-  <%= f.input :user_is_owner %>
+  <%= f.input :user_is_owner, label: "I own the game"%>
   <%= f.input :description, label: "Comments" %>
   <%= f.submit %>
 <% end %>
