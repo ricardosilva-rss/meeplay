@@ -10,7 +10,7 @@ class Bgg
 
   def call
     CSV.foreach(@filepath, headers: :first_row) do |row|
-      Boardgame.new(bgg_id: row['bgg_id'].to_i, name: row['name'],
+      Boardgame.create(bgg_id: row['bgg_id'].to_i, name: row['name'],
                     max_players: row['max_players'].to_i, rating: row['avg_rating'].to_f,
                     complexity: row['complexity'].to_f, avg_duration: (row['max_time'].to_i - row['min_time'].to_i)
                   )
