@@ -1,0 +1,9 @@
+<%= simple_form_for(meeting) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :boardgame.name %>
+  <%= f.input :address %>
+  <%= f.input :players_wanted, collection: 1..10 %>
+  <%= f.input :user_is_owner %>
+  <%= f.input :description %>
+  <%= f.submit %>
+<% end %>
