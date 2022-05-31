@@ -1,10 +1,12 @@
 <div data-search-boardgames-target="list">
     <% boardgames.each do |boardgame| %>
       <div>
+      <%= link_to(boardgame_path(boardgame)) do %>
         <h3><%= boardgame.name %></h3>
         <%= cl_image_tag boardgame.photo.key, width:100%>
         <p>max. players: <%= boardgame.max_players %></p>
         <p>complexity: <%= boardgame.complexity%></p>
+      <% end %>
       </div>
     <% end %>
   </div>
