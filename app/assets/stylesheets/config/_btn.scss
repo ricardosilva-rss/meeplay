@@ -3,7 +3,7 @@ width: 70px;
 height: 97.45px;
 left: 154px;
 top: 721.55px;
-background: #A380BD;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 }
 
 .home_btn{
@@ -11,7 +11,7 @@ width: 45px;
 height: 45px;
 left: 24px;
 top: 759px;
-background: #A380BD;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 
 }
 
@@ -20,7 +20,7 @@ width: 51px;
 height: 51px;
 left: 21px;
 top: 12px;
-background: #A380BD;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 }
 
 .a_btn{
@@ -28,7 +28,7 @@ width: 194px;
 height: 52.97px;
 left: 89px;
 top: 646px;
-background: #A380BD;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 }
 
 .chat_btn{
@@ -36,7 +36,7 @@ left: 67.2%;
 right: 10.67%;
 top: 72.41%;
 bottom: 24.26%;
-background: #A380BD;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 
 }
 
@@ -45,5 +45,23 @@ left: 67.2%;
 right: 10.67%;
 top: 77.22%;
 bottom: 18.97%;
-background: #A380BD;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
+}
+
+.calendar_btn{
+width: 31px;
+height: 31px;
+left: 99px;
+top: 764px;
+background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
+}
+
+.messages_btn{
+  left: 66.4%;
+  right: 25.33%;
+  top: 94.46%;
+  bottom: 1.72%;
+  background: #FFFFFF;
+  border: 3px solid #A380BD;
+  box-sizing: border-box;
 }
