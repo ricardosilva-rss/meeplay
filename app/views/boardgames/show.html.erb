@@ -1,0 +1,10 @@
+<p><%= link_to '<', :back %></p>
+<h1><%= @boardgame.name %></h1>
+<%= cl_image_tag @boardgame.photo.key, width: '50%' %>
+<p>rating: <%= @boardgame.rating %></p>
+<p>complexity: <%= @boardgame.complexity %></p>
+<p>max. players: <%= @boardgame.max_players %></p>
+<p>average duration<%= @boardgame.avg_duration %> min.</p>
+<p><%= link_to "find meetings to play #{@boardgame.name}", meetings_path, class:'' %></p>
+<p><%= link_to 'new meeting', new_meeting_path, class:'' %></p>
+<p><%= link_to 'add to my games', '#', class:'' %></p>
