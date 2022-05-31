@@ -1,14 +1,22 @@
 <h1>Meeting: <%= ${@meeting.name} %></h1>
 
-<%= @meeting.user.name %>
-<%= @meeting.user_is_owner %>
-
 <%= @meeting.boardgame.name %>
-<%= @meeting.start_date %>
-<%= @meeting.players_wanted %>
 
-<%= @meeting.address %>
-<%= @meeting.description %>
+<%= @meeting.boardgame.foto %>
 
+<p>Created by: <%= @meeting.user.name %></p>
+<% if @meeting.user_is_owner %>
+  <p><%= 'I own the boardgame' %></p>
+<% else %>
+  <p><%= "I don't own the boardgame" %></p>
+<% end %>
+
+<p>date and time: <%= @meeting.start_date %></p>
+<p>address: <%= @meeting.address %></p>
+
+<p>Comments: <%= @meeting.description %></p>
+
+<p>Waiting for: x/<%= @meeting.players_wanted %></p>
+<% # need to work on decreasing x according to number of players already joined %>
 
 <% # see also players already joined. don't know how yet. %>
