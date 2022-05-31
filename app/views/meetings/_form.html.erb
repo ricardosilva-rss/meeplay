@@ -1,10 +1,10 @@
 <%= simple_form_for(meeting) do |f| %>
   <%= f.input :name %>
   <% # add default boardgame.name %>
-  <%= f.input :boardgame %>
+  <%= f.association :boardgame, input_html: { data: { controller: 'select2' } } %>
   <% # make it a list from api and update list as you write %>
-  <%= f.input :star_date %>
-  <%= f.input :star_time %>
+  <%= f.input :start_date %>
+  <%# <%= f.input :start_time %>
   <%= f.input :address %>
   <% # make it a list from gem and update list as you write %>
   <%= f.input :players_wanted, collection: 1..10 %>
