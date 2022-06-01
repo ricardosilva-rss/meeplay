@@ -16,7 +16,7 @@
 
 <p>comments: <%= @meeting.description %></p>
 
-<p>waiting for: <%= (@meeting.players_wanted - (@meeting.user_meetings.count - 1)) %>/<%= @meeting.players_wanted %></p>
+<p>waiting for: <%= @meeting.players_wanted %> players</p>
 
 <% # see also players already joined. don't know how yet. %>
 

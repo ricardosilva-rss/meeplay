@@ -11,7 +11,7 @@ class BoardgamesController < ApplicationController
       format.text { render partial: 'boardgames/list', locals: { boardgames: @boardgames }, formats: [:html]  }
     end
   end
-  
+
   def show
     @boardgame = Boardgame.find(params[:id])
     authorize @boardgame
