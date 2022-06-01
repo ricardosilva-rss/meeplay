@@ -1,10 +1,7 @@
 // Specific CSS for your home-page
-.container {
+.container-picture {
   display: flex;
   justify-content: center;
-}
-
-.container-picture {
   padding: 20px;
 }
 
@@ -12,11 +9,22 @@
   border-radius: 50%;
 }
 
+.container-meeplay {
+  display: flex;
+  justify-content: center;
+}
+
+.container-catch-frase {
+  display: flex;
+  justify-content: center;
+}
+
 .container-btn {
-  flex-direction: column;
+  display: flex;
+  justify-content: center;
   padding: 50px;
   margin-top: 20px;
-  .container-login{
-    margin-bottom: 2px;
+  .b_btn {
+    margin-bottom: 3px;
   }
 }
