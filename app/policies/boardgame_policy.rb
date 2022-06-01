@@ -7,6 +7,6 @@ class BoardgamePolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    true
   end
 end
