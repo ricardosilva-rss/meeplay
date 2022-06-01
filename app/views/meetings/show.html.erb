@@ -20,4 +20,8 @@
 
 <% # see also players already joined. don't know how yet. %>
 
+<% if policy(@meeting).destroy? %>
+  <%= link_to 'cancel session', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+<% end %>
+
 <%= link_to 'Back', meetings_path %>

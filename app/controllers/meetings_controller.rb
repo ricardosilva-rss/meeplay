@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: [ :show ]
+  before_action :set_meeting, only: [ :show, :destroy ]
 
   def index
     @meetings = policy_scope(Meeting).order(created_at: :desc)
@@ -21,10 +21,15 @@ class MeetingsController < ApplicationController
     authorize @meeting
 
     if @meeting.save!
-      redirect_to meeting_path(@meeting), notice: 'Meeting was successfully scheduale.'
+      redirect_to meeting_path(@meeting), notice: 'Meeting was successfully scheduled.'
     else
       render :new
     end
+  end
+
+  def destroy
+    @meeting.destroy
+    redirect_to meetings_path, notice: "#{@meeting.name} was successfully canceled."
   end
 
   private

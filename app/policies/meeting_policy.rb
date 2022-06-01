@@ -13,4 +13,14 @@ class MeetingPolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def destroy?
+    owner_or_admin?
+  end
+
+  private
+
+  def owner_or_admin?
+    record.user == user
+  end
 end
