@@ -43,7 +43,7 @@
   color: #FFFFFF;
 }
 
-b.btn{
+.b_btn{
   width: 140px;
   height: 37.97px;
   background: #FFFFFF;
@@ -52,12 +52,13 @@ b.btn{
   font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 18px;
   display: flex;
   align-items: center;
-  text-align: center;
+  justify-content: center;
   color: #662C91;
+  text-decoration: none;
 }
 
 .chat_btn{
