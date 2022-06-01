@@ -1,27 +1,32 @@
-<h1>meeting: <%= @meeting.name %></h1>
+<div class="px-4">
+  <h1 class="pb-3"><%= @meeting.name %></h1>
+  <p><span style="color: #A380BD">created by:</span> <%= @user.name %></p>
 
-<p>boardgame: <%= @meeting.boardgame.name %></p>
+  <p><span style="color: #A380BD">boardgame:</span> <%= @meeting.boardgame.name %></p>
+  <div class="text-center pb-4">
+    <%= cl_image_tag @meeting.boardgame.photo.key, width: '50%' %>
+  </div>
 
-<% # TODO: add boardgame photo %>
+  <div class="d-flex justify-content-center">
+    <% if @meeting.user_is_owner %>
+      <p style="color: #A380BD"><i class="fa fa-solid fa-check px-2"></i><%= 'I own the boardgame' %></p>
+    <% else %>
+      <p style="color: #A380BD"><i class="fa-solid fa-xmark-large px-1"></i><%= "I don't own the boardgame" %></p>
+    <% end %>
+  </div>
 
-<p>created by: <%= @user.name %></p>
-<% if @meeting.user_is_owner %>
-  <p><%= 'I own the boardgame' %></p>
-<% else %>
-  <p><%= "I don't own the boardgame" %></p>
-<% end %>
+  <p>date and time: <%= @meeting.start_date %></p>
+  <p>address: <%= @meeting.address %></p>
 
-<p>date and time: <%= @meeting.start_date %></p>
-<p>address: <%= @meeting.address %></p>
+  <p>comments: <%= @meeting.description %></p>
 
-<p>comments: <%= @meeting.description %></p>
+  <p>waiting for: <%= @meeting.players_wanted %> players</p>
 
-<p>waiting for: <%= @meeting.players_wanted %> players</p>
+  <% # see also players already joined. don't know how yet. %>
 
-<% # see also players already joined. don't know how yet. %>
+  <% if policy(@meeting).destroy? %>
+    <%= link_to 'cancel session', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+  <% end %>
 
-<% if policy(@meeting).destroy? %>
-  <%= link_to 'cancel session', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
-<% end %>
-
-<%= link_to 'Back', meetings_path %>
+  <%= link_to 'Back', meetings_path %>
+</div>
