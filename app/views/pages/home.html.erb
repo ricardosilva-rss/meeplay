@@ -8,5 +8,10 @@
   <h2>find people. meet. play.</h2>
 </div>
 <div class="container container-btn">
-  <%= link_to 'start now', meetings_path, class: 'a_btn' %>
+  <div class="container container-login">
+    <%= link_to 'log in', new_user_session_path, class: 'b_btn' %>
+  </div>
+  <div class="container">
+    <%= link_to 'start now', meetings_path, class: 'a_btn' %>
+  </div>
 </div>

@@ -13,6 +13,10 @@
 }
 
 .container-btn {
+  flex-direction: column;
   padding: 50px;
   margin-top: 20px;
+  .container-login{
+    margin-bottom: 2px;
+  }
 }
