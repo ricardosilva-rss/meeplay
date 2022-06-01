@@ -1,32 +1,46 @@
 <div class="px-4">
-  <h1 class="pb-3"><%= @meeting.name %></h1>
-  <p><span style="color: #A380BD">created by:</span> <%= @user.name %></p>
+  <h1 class="pb-3"><%=@meeting.name %></h1>
+  <div class="px-4">
+    <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.email %></p>
 
-  <p><span style="color: #A380BD">boardgame:</span> <%= @meeting.boardgame.name %></p>
-  <div class="text-center pb-4">
-    <%= cl_image_tag @meeting.boardgame.photo.key, width: '50%' %>
-  </div>
-
-  <div class="d-flex justify-content-center">
-    <% if @meeting.user_is_owner %>
-      <p style="color: #A380BD"><i class="fa fa-solid fa-check px-2"></i><%= 'I own the boardgame' %></p>
-    <% else %>
-      <p style="color: #A380BD"><i class="fa-solid fa-xmark-large px-1"></i><%= "I don't own the boardgame" %></p>
+    <div class="d-flex justify-content-start">
+      <p><%= link_to("https://boardgamegeek.com/boardgame/#{@meeting.boardgame.bgg_id}") do %><%= @meeting.boardgame.name %></p>
+      <% if @meeting.user_is_owner %>
+          <p style="color: #A380BD"><i class="fa fa-solid fa-check px-1"></i><%= '(host owns this boardgame)' %></p>
+        <% else %>
+          <p style="color: #A380BD"><i class="fa-solid fa-xmark-large px-1"></i><%= "(host doesn't own this boardgame)" %></p>
+        <% end %>
+    </div>
+    <div class="text-center pb-4">
+      <%= cl_image_tag @meeting.boardgame.photo.key, width: '75%', class: 'game-photo my-4'%>
+    </div>
     <% end %>
+    <div class="d-flex justify-content-between px-3">
+      <p><i class="fa fa-solid fa-map-pin" style="color: #A380BD"></i> <%= @meeting.address %></p>
+      <p><i class="fa fa-regular fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date %></p>
+    </div>
+    <div class="text-center">
+      <p>waiting for <%= @meeting.players_wanted %> players</p>
+        <% # see also players already joined. don't know how yet. %>
+    </div>
+    <div class="text-justify pt-3">
+      <p style="color: #A380BD" class="mb-0">comments:</p>
+      <p style="color: #BBBBBB; text-align: justify" ><%= @meeting.description%></p>
+    </div>
+    <div class="d-flex justify-content-center py-3">
+      <% if current_user != @meeting.user %>
+        <%= link_to 'join', "#", class:'a_btn' %>
+      <% else %>
+        <% if policy(@meeting).destroy? %>
+          <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center py-3">
+      <%= link_to 'chat', "#", class:'a_btn' %>
+    </div>
+    <div class="d-flex justify-content-center py-3">
+      <%= link_to 'back', meetings_path, class:'b_btn' %>
+    </div>
   </div>
-
-  <p>date and time: <%= @meeting.start_date %></p>
-  <p>address: <%= @meeting.address %></p>
-
-  <p>comments: <%= @meeting.description %></p>
-
-  <p>waiting for: <%= @meeting.players_wanted %> players</p>
-
-  <% # see also players already joined. don't know how yet. %>
-
-  <% if policy(@meeting).destroy? %>
-    <%= link_to 'cancel session', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
-  <% end %>
-
-  <%= link_to 'Back', meetings_path %>
 </div>
