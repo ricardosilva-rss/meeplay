@@ -17,9 +17,10 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
+    @meeting.chatroom = Chatroom.new
     authorize @meeting
 
-    if @meeting.save
+    if @meeting.save!
       redirect_to meeting_path(@meeting), notice: 'Meeting was successfully scheduale.'
     else
       render :new
