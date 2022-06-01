@@ -29,7 +29,7 @@ class MeetingsController < ApplicationController
   private
 
   def meeting_params
-    params.require(:meeting).permit(:name, :boardgame_id.name, :start_date, :players_wanted, :user_is_owner, :address, :description)
+    params.require(:meeting).permit(:name, :boardgame_id.name, :start_date, :start_time, :players_wanted, :user_is_owner, :address, :description)
   end
 
   def set_meeting

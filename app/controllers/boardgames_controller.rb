@@ -1,7 +1,4 @@
 class BoardgamesController < ApplicationController
-<<<<<<< HEAD
-
-=======
   def index
     if params[:query].present?
       @boardgames = policy_scope(Boardgame.search_by_name_and_max_players(params[:query]))
@@ -14,10 +11,9 @@ class BoardgamesController < ApplicationController
       format.text { render partial: 'boardgames/list', locals: { boardgames: @boardgames }, formats: [:html]  }
     end
   end
-  
+
   def show
     @boardgame = Boardgame.find(params[:id])
     authorize @boardgame
   end
->>>>>>> master
 end
