@@ -7,12 +7,16 @@ background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 }
 
 .home_btn{
-width: 45px;
-height: 45px;
-left: 24px;
-top: 759px;
-background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
-
+  left: 15.69%;
+  right: 14.31%;
+  top: 0%;
+  bottom: -0.56%;
+  font-family: 'Comfortaa';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 87.8431px;
+  line-height: 98px;
+  color: #FFFFFF;
 }
 
 .avatar_btn{
@@ -24,23 +28,26 @@ background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
 }
 
 .a_btn{
-width: 194px;
-height: 52.97px;
-left: 89px;
-top: 646px;
-background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
+  width: 140px;
+  height: 37.97px;
+  background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
+  border-radius: 25px;
 }
 b.btn{
-width: 140px;
-height: 37.97px;
+  width: 140px;
+  height: 37.97px;
+  background: #FFFFFF;
+  border: 1px solid #662C91;
+  border-radius: 25px;
 }
 
 .chat_btn{
-left: 67.2%;
-right: 10.67%;
-top: 72.41%;
-bottom: 24.26%;
-background: linear-gradient(360deg, #662C91 -0.08%, #A380BD 100%);
+  left: 69.87%;
+  right: 21.87%;
+  top: 94.58%;
+  bottom: 1.6%;
+  background: #FFFFFF;
+  border: 3px solid #A380BD;
 
 }
 
