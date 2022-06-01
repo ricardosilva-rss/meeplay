@@ -1,1 +1,18 @@
 // Specific CSS for your home-page
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.container-picture {
+  padding: 20px;
+}
+
+.container-picture img {
+  border-radius: 50%;
+}
+
+.container-btn {
+  padding: 50px;
+  margin-top: 20px;
+}
