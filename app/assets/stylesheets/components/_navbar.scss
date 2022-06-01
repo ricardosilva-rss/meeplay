@@ -10,3 +10,30 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar-toggler {
+  border: none;
+}
+
+.navbar-brand {
+  // position: relative;
+  // left: 50vw;
+  // display: block;
+  // margin: auto;
+  margin: 0;
+}
+
+.dropdown-menu{
+  left:-114px !important;
+  top: 120% !important;
+  border-color: $very-light-purple;
+}
+
+.dropdown-menu a {
+  color: $light-purple;
+}
+
+.navbar {
+  background: transparent;
+  margin-bottom: 29px;
+}
