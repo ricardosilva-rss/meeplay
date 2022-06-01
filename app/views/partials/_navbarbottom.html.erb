@@ -1,9 +1,19 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom m-height-navbar border-navbar" >
   <div class="container-fluid align-items-start">
-    <a class="nav-link" href="#"><i class="fa-solid fa-house home_btn"></i></a>
-    <a class="nav-link" href="#"><i class="fa-solid fa-calendar calendar_btn"></i></a>
-    <a class="plus_btn height1" href="#"><i class="fas fa-plus"></i></a>
-    <a class="nav-link messages_btn" href="#"><i class="fa-solid fa-message"></i></a>
-    <a class="nav-link" href="#"><i class="fa-solid fa-user avatar_btn "></i></a>
+    <%= link_to(meetings_path, class:'nav-link') do %>
+      <i class="fa-solid fa-house home_btn"></i>
+    <% end %>
+    <%= link_to("#", class:'nav-link') do %>
+      <i class="fa-solid fa-calendar calendar_btn"></i>
+    <% end %>
+    <%= link_to(new_meeting_path, class:'nav-link plus_btn height1') do %>
+      <i class="fas fa-plus"></i>
+    <% end %>
+    <%= link_to("#", class:'nav-link messages_btn') do %>
+      <i class="fa-solid fa-message"></i>
+    <% end %>
+    <%= link_to("#", class:'nav-link') do %>
+      <i class="fa-solid fa-user avatar_btn "></i>
+    <% end %>
   </div>
 </div>

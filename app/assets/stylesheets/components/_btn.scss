@@ -7,10 +7,22 @@
   color: white;
   font-size:40px;
   position: relative;
-  bottom: 42px;
+  bottom: 38px;
   border: 10px solid white;
+  width: 90px;
+  height: 90px;
+  text-align: center;
+}
 
+.plus_btn:hover{
+  color: white;
+}
 
+.plus_btn:active {
+  color: white;
+}
+.plus_btn:focus {
+  color: white;
 }
 
 .m-height-navbar{
@@ -68,10 +80,6 @@ b.btn{
   color: #662C91;
 }
 
-.chat_btn{
-
-
-}
 
 
 .calendar_btn{
@@ -81,11 +89,17 @@ b.btn{
 }
 
 .messages_btn{
-
-
-
   text-decoration: none;
   color: #A380BD;
   font-size:25px;
+  margin-bottom: 10px;
+  line-height: 3px;
+}
 
+.messages_btn:hover{
+  text-decoration: none;
+  color: #A380BD;
+  font-size:25px;
+  margin-bottom: 10px;
+  line-height: 3px;
 }
