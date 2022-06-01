@@ -27,7 +27,8 @@ body {
   background: linear-gradient(180deg, #F5F2F8 0%, #FFFFFF 100%);
   font-family: $body-font;
   font-size: 12px;
-  height: 100vh;
+  min-height: 130vh;
+  max-height: auto;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
