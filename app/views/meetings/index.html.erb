@@ -1,9 +1,9 @@
-<h1>Meetings</h1>
+<h1>meetings</h1>
 
 <% # meeting should be a card with info %>
 
 <% @meetings.each do |meeting| %>
-<%= meeting.name %>
-<%= meeting.boardgame.name %>
-<%= meeting.start_date %>
+  <p><%= link_to meeting.name, meeting_path(meeting) %></p>
+  <p>boardgame: <%= meeting.boardgame.name %></p>
+  <p>date and time: <%= meeting.start_date %></p>
 <% end %>

@@ -5,7 +5,9 @@ class MeetingsController < ApplicationController
     @meetings = policy_scope(Meeting).order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @user = User.where(params[:user])
+  end
 
   private
 
