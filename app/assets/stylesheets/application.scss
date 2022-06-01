@@ -12,6 +12,19 @@
 @import "components/index";
 @import "pages/index";
 
+h1 {
+  font-family: $headers-font;
+  font-size: 24px;
+  color: $dark-purple;
+}
+
+h2 {
+  font-family: $headers-font;
+  font-size: 16px;
+}
+
 body {
   background: linear-gradient(180deg, #F5F2F8 0%, #FFFFFF 100%);
+  font-family: $body-font;
+  font-size: 12px;
 }
