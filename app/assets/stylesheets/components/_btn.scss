@@ -62,6 +62,10 @@
   align-items: center;
   text-align: center;
   color: #FFFFFF;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .b_btn{
@@ -81,6 +85,10 @@
   align-items: center;
   justify-content: center;
   color: #662C91;
+
+  &:hover {
+    color: #662C91;
+  }
 }
 
 
