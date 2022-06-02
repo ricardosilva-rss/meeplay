@@ -1,19 +1,19 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom m-height-navbar border-navbar" >
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-bottom m-height-navbar border-navbar px-2" >
   <div class="container-fluid align-items-start">
     <%= link_to(meetings_path, class:'nav-link') do %>
-      <i class="fa-solid fa-house home_btn"></i>
+      <%= render 'shared/house' %>
     <% end %>
     <%= link_to("#", class:'nav-link') do %>
-      <i class="fa-solid fa-calendar calendar_btn"></i>
+      <i class="fa-regular fa-calendar calendar_btn"></i>
     <% end %>
     <%= link_to(new_meeting_path, class:'nav-link plus_btn height1') do %>
       <i class="fas fa-plus"></i>
     <% end %>
     <%= link_to("#", class:'nav-link messages_btn') do %>
-      <i class="fa-solid fa-message"></i>
+      <i class="fa-regular fa-message"></i>
     <% end %>
     <%= link_to("#", class:'nav-link') do %>
-      <i class="fa-solid fa-user avatar_btn "></i>
+      <i class="fa-regular fa-user avatar_btn "></i>
     <% end %>
   </div>
 </div>
