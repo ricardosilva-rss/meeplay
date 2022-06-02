@@ -53,6 +53,7 @@
           </div>
         <% end %>
       <% end %>
+
     <%# TODO: Add if-statement to make sure button only shows up for people in the meeting %>
     <div class="d-flex justify-content-center py-3">
       <%= link_to 'chat', chatroom_path(@meeting.chatroom), class:'a_btn' %>

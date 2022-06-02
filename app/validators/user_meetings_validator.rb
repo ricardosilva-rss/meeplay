@@ -1,5 +1,6 @@
 class UserMeetingsValidator < ActiveModel::Validator
   def validate(record)
+
     start_date = record.meeting.start_date
     start_time = record.meeting.start_time
     user = record.user
