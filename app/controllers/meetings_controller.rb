@@ -17,6 +17,7 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
+    UserMeetings.create(user: current_user, meeting: @meeting)
     @meeting.chatroom = Chatroom.new
     authorize @meeting
 
