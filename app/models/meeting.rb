@@ -12,4 +12,15 @@ class Meeting < ApplicationRecord
   validates :address, presence: true
   validates :user_is_owner, presence: true
   validates :name, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_address_and_host,
+  against: [ :address, :name, :start_date ],
+  associated_against: {
+    boardgame: [ :name ],
+    user: [ :email ]
+  },
+  using: {
+    tsearch: { prefix: true }
+  }
 end

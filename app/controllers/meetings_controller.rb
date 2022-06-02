@@ -2,7 +2,17 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @meetings = policy_scope(Meeting).order(created_at: :desc)
+    if params[:query].present?
+      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query]))
+    else
+      @meetings = policy_scope(Meeting).sample(10)
+    end
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: 'meetings/list', locals: { meetings: @meetings }, formats: [:html] }
+    end
+
   end
 
   def show

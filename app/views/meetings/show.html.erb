@@ -4,7 +4,7 @@
     <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.email %></p>
 
     <div class="d-flex justify-content-start">
-      <p><%= link_to("https://boardgamegeek.com/boardgame/#{@meeting.boardgame.bgg_id}") do %><%= @meeting.boardgame.name %></p>
+      <p><%= link_to(boardgame_path(@meeting.boardgame)) do %><%= @meeting.boardgame.name %></p>
       <% if @meeting.user_is_owner %>
           <p style="color: #A380BD"><i class="fa fa-solid fa-check px-1"></i><%= '(host owns this boardgame)' %></p>
         <% else %>
@@ -41,6 +41,7 @@
         <% end %>
       <% end %>
     </div>
+    <%# TODO: Add if-statement to make sure button only shows up for people in the meeting %>
     <div class="d-flex justify-content-center py-3">
       <%= link_to 'chat', "#", class:'a_btn' %>
     </div>
