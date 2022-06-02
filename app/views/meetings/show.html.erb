@@ -6,10 +6,10 @@
     <div class="d-flex justify-content-start">
       <p><%= link_to(boardgame_path(@meeting.boardgame)) do %><%= @meeting.boardgame.name %></p>
       <% if @meeting.user_is_owner %>
-          <p style="color: #A380BD"><i class="fa fa-solid fa-check px-1"></i><%= '(host owns this boardgame)' %></p>
-        <% else %>
-          <p style="color: #A380BD"><i class="fa-solid fa-xmark-large px-1"></i><%= "(host doesn't own this boardgame)" %></p>
-        <% end %>
+        <p style="color: #A380BD"><i class="fa fa-solid fa-check px-1"></i><%= '(host owns this boardgame)' %></p>
+      <% else %>
+        <p style="color: #A380BD"><i class="fa-solid fa-xmark-large px-1"></i><%= "(host doesn't own this boardgame)" %></p>
+      <% end %>
     </div>
     <div class="text-center pb-4">
       <%= cl_image_tag @meeting.boardgame.photo.key, width: '75%', class: 'game-photo my-4'%>
@@ -29,20 +29,30 @@
       <p style="color: #A380BD" class="mb-0">comments:</p>
       <p style="color: #BBBBBB; text-align: justify" ><%= @meeting.description%></p>
     </div>
-    <div class="d-flex justify-content-center py-3">
-      <% unless @meeting.users.find(current_user.id) %>
-        <%= simple_form_for [@meeting, @user_meeting] do |f| %>
-          <%= f.submit "Join", class: "a_btn" %>
-        <% end %>
+      <% unless @meeting.users.find_by(id: current_user.id).present? %>
+        <div class="d-flex justify-content-center py-3">
+          <%= simple_form_for [@meeting, @user_meeting] do |f| %>
+            <%= f.submit "join", class: "a_btn" %>
+          <% end %>
+        </div>
+      <% end %>
       <% if policy(@meeting).edit? %>
-        <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn' %>
+        <div class="d-flex justify-content-center py-3">
+          <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn' %>
+        </div>
       <% end %>
-    </div>
-    <div class="d-flex justify-content-center py-3">
       <% if policy(@meeting).destroy? %>
-        <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+        <div class="d-flex justify-content-center py-3">
+          <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+        </div>
       <% end %>
-    </div>
+      <% if @user_meeting.present? %>
+        <% if policy(@user_meeting).destroy? %>
+          <div class="d-flex justify-content-center py-3">
+            <%= link_to 'leave meeting', user_meeting_path(@user_meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+          </div>
+        <% end %>
+      <% end %>
     <%# TODO: Add if-statement to make sure button only shows up for people in the meeting %>
     <div class="d-flex justify-content-center py-3">
       <%= link_to 'chat', "#", class:'a_btn' %>
