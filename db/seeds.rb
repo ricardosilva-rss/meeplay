@@ -1,8 +1,8 @@
 require "open-uri"
 
 UserMeeting.destroy_all
-Chatroom.destroy_all
 Meeting.destroy_all
+Chatroom.destroy_all
 User.destroy_all
 Boardgame.destroy_all
 
