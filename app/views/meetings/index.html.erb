@@ -1,9 +1,22 @@
-<h1>meetings</h1>
+
 
 <% # meeting should be a card with info %>
-
+<div class="px-4">
+<h1>meetings</h1>
 <% @meetings.each do |meeting| %>
-  <p><%= link_to meeting.name, meeting_path(meeting) %></p>
-  <p>boardgame: <%= meeting.boardgame.name %></p>
-  <p>date and time: <%= meeting.start_date %></p>
+  <%= link_to meeting_path(meeting) do %>
+    <div class="card-product">
+      <%= cl_image_tag meeting.boardgame.photo.key, width: 96 %>
+      <div class="card-product-infos">
+        <div style="width: 215px"></div>
+          <p class="card-host"><%= render 'shared/small_meeple'%> <span style="padding: 3px"><%= h truncate(meeting.user.email, :length => 50) %></span></p>
+          <h2><%= meeting.boardgame.name %></h2>
+          <div class="d-flex justify-content-between">
+            <p style="color: #BBBBBB"><i class="fa fa-solid fa-map-pin"></i> <%= h truncate(meeting.address, :length => 20) %></p>
+            <p style="color: #BBBBBB"><i class="fa fa-regular fa-calendar"></i> <%= meeting.start_date %></p>
+          </div>
+       </div>
+     </div>
+   <% end %>
 <% end %>
+</div>
