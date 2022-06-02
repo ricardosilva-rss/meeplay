@@ -5,4 +5,5 @@ Rails.application.routes.draw do
     resources :user_meetings, only: [:create]
   end
   resources :boardgames, only: [:index, :show]
+  resources :user_meetings, only: [:destroy]
 end
