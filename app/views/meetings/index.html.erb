@@ -1,9 +1,24 @@
-<h1>meetings</h1>
-
 <% # meeting should be a card with info %>
+<div class="px-4" data-controller="search-meetings">
 
-<% @meetings.each do |meeting| %>
-  <p><%= link_to meeting.name, meeting_path(meeting) %></p>
-  <p>boardgame: <%= meeting.boardgame.name %></p>
-  <p>date and time: <%= meeting.start_date %></p>
-<% end %>
+  <div class="search-bar">
+    <%= form_with url: meetings_path, method: :get,
+        html: { class: '', data: { search_meetings_target: 'form' } } do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "search meeting",
+          value: params[:query],
+          data: {
+            search_meetings_target: 'input',
+            action: 'keyup->search-meetings#update'
+            }
+      %>
+    <% end %>
+    <%# <%= submit_tag "Search", class: "" %>
+  </div>
+  <%= link_to(@meetings_path) do %>
+    <h1>meetings</h1>
+  <% end %>
+  <%= render 'list', meetings: @meetings %>
+</div>

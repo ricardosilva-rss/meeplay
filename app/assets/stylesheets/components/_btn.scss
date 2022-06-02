@@ -37,13 +37,12 @@
 .home_btn{
   text-decoration: none;
   color: #A380BD;
-  font-size:25px;
 }
 
 .avatar_btn{
   text-decoration: none;
   color: #A380BD;
-  font-size:23px;
+  font-size:24px;
 
 }
 
@@ -56,13 +55,17 @@
   font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #FFFFFF;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .b_btn{
@@ -75,13 +78,17 @@
   font-family: 'Comfortaa';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
   justify-content: center;
   color: #662C91;
+
+  &:hover {
+    color: #662C91;
+  }
 }
 
 
