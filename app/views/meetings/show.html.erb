@@ -21,15 +21,19 @@
     </div>
     <div class="text-center">
       <p>waiting for <%= @meeting.players_wanted %> players</p>
-        <% # see also players already joined. don't know how yet. %>
+        <% @meeting.users.each do |user| %>
+         <%= user.email %>
+        <% end %>
     </div>
     <div class="text-justify pt-3">
       <p style="color: #A380BD" class="mb-0">comments:</p>
       <p style="color: #BBBBBB; text-align: justify" ><%= @meeting.description%></p>
     </div>
     <div class="d-flex justify-content-center py-3">
-      <% if current_user != @meeting.user %>
-        <%= link_to 'join', "#", class:'a_btn' %>
+      <% unless @meeting.users.find(current_user.id) %>
+        <%= simple_form_for [@meeting, @user_meeting] do |f| %>
+          <%= f.submit "Join", class: "a_btn" %>
+        <% end %>
       <% else %>
         <% if policy(@meeting).destroy? %>
           <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>

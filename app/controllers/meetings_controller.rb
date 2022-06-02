@@ -7,6 +7,7 @@ class MeetingsController < ApplicationController
 
   def show
     @user = User.where(params[:user])
+    @user_meeting = UserMeeting.new
   end
 
   def new
