@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: [ :show, :destroy ]
+  before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @meetings = policy_scope(Meeting).order(created_at: :desc)
@@ -17,14 +17,24 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
-    UserMeetings.create(user: current_user, meeting: @meeting)
+    # UserMeetings.create(user: current_user, meeting: @meeting)
     @meeting.chatroom = Chatroom.new
     authorize @meeting
 
     if @meeting.save!
-      redirect_to meeting_path(@meeting), notice: 'Meeting was successfully scheduled.'
+      redirect_to meeting_path(@meeting), notice: 'meeting was successfully scheduled.'
     else
       render :new
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @meeting.update(meeting_params)
+      redirect_to meeting_path(@meeting), notice: 'meeting was successfully updated.'
+    else
+      render :edit
     end
   end
 
