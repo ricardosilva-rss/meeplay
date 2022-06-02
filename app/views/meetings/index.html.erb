@@ -2,11 +2,12 @@
 <div class="px-4" data-controller="search-meetings">
 
   <div class="search-bar">
+  <i class="fas fa-search fs-6"></i>
     <%= form_with url: meetings_path, method: :get,
         html: { class: '', data: { search_meetings_target: 'form' } } do %>
       <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control ps-5",
           placeholder: "search meeting",
           value: params[:query],
           data: {

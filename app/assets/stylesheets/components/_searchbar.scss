@@ -6,9 +6,20 @@
   border: none;
   margin-bottom: 32px;
   padding: 15px 30px;
+
   &::placeholder {
     font-family: 'Comfortaa';
     color: $meeplay-gray;
   }
+}
 
+.search-bar {
+  position: relative;
+
+  i {
+    position: absolute;
+    left: 20px;
+    top: 19px;
+    color: #bbb
+  }
 }
