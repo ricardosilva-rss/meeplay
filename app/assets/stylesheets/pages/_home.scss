@@ -2,16 +2,19 @@
 .container-picture {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 50px;
 }
 
 .container-picture img {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
 }
 
 .container-meeplay {
   display: flex;
   justify-content: center;
+  padding-top: 20px;
 }
 
 .container-catch-frase {
