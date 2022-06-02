@@ -28,6 +28,11 @@
       <p style="color: #BBBBBB; text-align: justify" ><%= @meeting.description%></p>
     </div>
     <div class="d-flex justify-content-center py-3">
+      <% if policy(@meeting).edit? %>
+        <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn' %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center py-3">
       <% if current_user != @meeting.user %>
         <%= link_to 'join', "#", class:'a_btn' %>
       <% else %>
