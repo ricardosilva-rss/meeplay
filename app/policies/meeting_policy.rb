@@ -22,6 +22,10 @@ class MeetingPolicy < ApplicationPolicy
     owner_or_admin?
   end
 
+  def my_meetings?
+    true
+  end
+
   private
 
   def owner_or_admin?

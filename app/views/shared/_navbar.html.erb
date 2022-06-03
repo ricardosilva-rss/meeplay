@@ -13,8 +13,9 @@
 
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <% if user_signed_in? %>
-          <%= link_to "my meetings", "#", class: "dropdown-item" %>
-          <%= link_to "my boardgames", "#", class: "dropdown-item" %>
+          <%= link_to "my meetings", my_meetings_path, class: "dropdown-item" %>
+          <%# <%= link_to "my boardgames", "#", class: "dropdown-item" %>
+          <%= link_to "boardgames", boardgames_path, class: "dropdown-item" %>
           <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         <% else %>
           <%= link_to "log in", "#", class: "dropdown-item" %>

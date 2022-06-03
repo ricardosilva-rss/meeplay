@@ -12,7 +12,6 @@ class MeetingsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: 'meetings/list', locals: { meetings: @meetings }, formats: [:html] }
     end
-
   end
 
   def show
@@ -56,6 +55,11 @@ class MeetingsController < ApplicationController
   def destroy
     @meeting.destroy
     redirect_to meetings_path, notice: "#{@meeting.name} was successfully canceled."
+  end
+
+  def my_meetings
+    @meetings = policy_scope(current_user.meetings)
+    authorize @meetings
   end
 
   private
