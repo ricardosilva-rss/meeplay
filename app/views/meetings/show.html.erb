@@ -53,10 +53,11 @@
           </div>
         <% end %>
       <% end %>
-
-    <div class="d-flex justify-content-center py-3">
-      <%= link_to 'chat', chatroom_path(@meeting.chatroom), class:'a_btn' %>
-    </div>
+      <% if policy(@meeting.chatroom).show? %>
+        <div class="d-flex justify-content-center py-3">
+          <%= link_to 'chat', chatroom_path(@meeting.chatroom), class:'a_btn' %>
+        </div>
+      <% end %>
     <div class="d-flex justify-content-center py-3">
       <%= link_to 'back', meetings_path, class:'b_btn' %>
     </div>

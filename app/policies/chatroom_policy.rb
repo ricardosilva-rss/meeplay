@@ -7,6 +7,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user.in? record.meeting.users
   end
 end
