@@ -17,7 +17,12 @@ class MeetingsController < ApplicationController
 
   def show
     @user = User.where(params[:user])
-    @user_meeting = UserMeeting.new
+
+    @user_meeting = UserMeeting.where(meeting_id: @meeting.id).select do |user_meeting|
+      user_meeting.user == current_user
+    end
+
+    @user_meeting = UserMeeting.new unless @user_meeting.present?
   end
 
   def new
@@ -28,7 +33,7 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
     @meeting.user = current_user
-    # UserMeetings.create(user: current_user, meeting: @meeting)
+    UserMeetings.create(user: current_user, meeting: @meeting)
     @meeting.chatroom = Chatroom.new
     authorize @meeting
 
