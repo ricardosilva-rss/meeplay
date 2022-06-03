@@ -13,6 +13,8 @@ class Meeting < ApplicationRecord
   validates :user_is_owner, presence: true
   validates :name, presence: true
 
+  after_create :create_user_meeting
+
   include PgSearch::Model
   pg_search_scope :search_by_name_and_address_and_host,
   against: [ :address, :name, :start_date ],
@@ -23,4 +25,10 @@ class Meeting < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  private
+
+  def create_user_meeting
+    UserMeeting.create!(user: self.user, meeting: self)
+  end
 end
