@@ -142,14 +142,14 @@ meeting_ricardo_4 = Meeting.create!(user: ricardo, boardgame: boardgame16, start
   address: "Lisboa, Rossio"
 )
 
-UserMeeting.create!(user: guy, meeting: meeting_jose_2)
-UserMeeting.create!(user: guy, meeting: meeting_raimundo_3)
-UserMeeting.create!(user: guy, meeting: meeting_ricardo_3)
-UserMeeting.create!(user: guy, meeting: meeting_ricardo_4)
+# UserMeeting.create!(user: guy, meeting: meeting_jose_2)
+# UserMeeting.create!(user: guy, meeting: meeting_raimundo_3)
+# UserMeeting.create!(user: guy, meeting: meeting_ricardo_3)
+# UserMeeting.create!(user: guy, meeting: meeting_ricardo_4)
 
-UserMeeting.create!(user: jose, meeting: meeting_guy_3)
-UserMeeting.create!(user: jose, meeting: meeting_guy_2)
-UserMeeting.create!(user: jose, meeting: meeting_raimundo_4)
-UserMeeting.create!(user: jose, meeting: meeting_ricardo_4)
+# UserMeeting.create!(user: jose, meeting: meeting_guy_3)
+# UserMeeting.create!(user: jose, meeting: meeting_guy_2)
+# UserMeeting.create!(user: jose, meeting: meeting_raimundo_4)
+# UserMeeting.create!(user: jose, meeting: meeting_ricardo_4)
 
-UserMeeting.create!(user: raimundo, meeting: meeting_ricardo_4)
+# UserMeeting.create!(user: raimundo, meeting: meeting_ricardo_4)
