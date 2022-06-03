@@ -1,10 +1,26 @@
-<p><%= link_to '<', :back %></p>
-<h1><%= @boardgame.name %></h1>
-<%= cl_image_tag @boardgame.photo.key, width: '50%' %>
-<p>rating: <%= @boardgame.rating %></p>
-<p>complexity: <%= @boardgame.complexity %></p>
-<p>max. players: <%= @boardgame.max_players %></p>
-<p>average duration<%= @boardgame.avg_duration %> min.</p>
-<p><%= link_to "find meetings to play #{@boardgame.name}", meetings_path, class:'' %></p>
-<p><%= link_to 'new meeting', new_meeting_path, class:'' %></p>
-<p><%= link_to 'add to my games', '#', class:'' %></p>
+<div class="px-4">
+  <h1 class="pb-3"><%=@boardgame.name %></h1>
+  <div class="px-4">
+    <p><span style="color: #A380BD"></p>
+
+    <div class="d-flex justify-content-start">
+      <p><%= link_to(boardgame_path(@boardgame)) do %></p>
+
+
+    </div>
+    <div class="text-center pb-4">
+      <%= cl_image_tag @boardgame.photo.key, width: '75%', class: 'game-photo my-4'%>
+    </div>
+    <% end %>
+    <div class="d-colum justify-content-between px-3">
+      <p><i class="fa-solid fa-clock" style="color: #A380BD"></i> <%= @boardgame.avg_duration %> (min)</p>
+      <p><i class="fa-solid fa-users" style="color: #A380BD"></i> <%= @boardgame.max_players %> players</p>
+       <p><i class="fa-solid fa-clipboard-list" style="color: #A380BD"></i> <%= @boardgame.complexity %>/10</p>
+        <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating %>/10</p>
+    </div>
+
+    <div class="text-justify pt-3">
+      <%= link_to "additional info", "https://boardgamegeek.com/boardgame/#{@boardgame.bgg_id}" %>
+
+
+    </div>

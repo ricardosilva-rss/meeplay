@@ -1,22 +1,26 @@
-<h1>Boardgames</h1>
-
-<% # boardgame should be a card with info %>
-<div data-controller="search-boardgames">
-  <div class="search-bar">
-    <%= form_with url: boardgames_path, method: :get,
-        html: { class: '', data: { search_boardgames_target: 'form' } } do %>
-      <%= text_field_tag :query,
-          params[:query],
-          class: "form-control form-radius",
-          placeholder: "Find a boardgame",
-          value: params[:query],
-          data: {
-            search_boardgames_target: 'input',
-            action: 'keyup->search-boardgames#update'
-            }
-      %>
+<div class="px-4">
+  <% # boardgame should be a card with info %>
+  <div data-controller="search-boardgames">
+    <div class="search-bar">
+      <i class="fas fa-search fs-6"></i>
+      <%= form_with url: boardgames_path, method: :get,
+          html: { class: '', data: { search_boardgames_target: 'form' } } do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control form-radius ps-5 ",
+            placeholder: "find a boardgame",
+            value: params[:query],
+            data: {
+              search_boardgames_target: 'input',
+              action: 'keyup->search-boardgames#update'
+              }
+        %>
+      <% end %>
+      <%# <%= submit_tag "Search", class: "" %>
+    </div>
+    <%= link_to(@boardgames_path) do %>
+      <h1>boardgames</h1>
     <% end %>
-    <%= submit_tag "Search", class: "" %>
+    <%= render 'list', boardgames: @boardgames %>
   </div>
-  <%= render 'list', boardgames: @boardgames %>
 </div>
