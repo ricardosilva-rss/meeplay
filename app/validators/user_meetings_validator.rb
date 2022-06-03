@@ -4,7 +4,7 @@ class UserMeetingsValidator < ActiveModel::Validator
     start_date = record.meeting.start_date
     start_time = record.meeting.start_time
     user = record.user
-    user_appointments = Meeting.where(user: user, start_date: start_date, start_time: start_time)
+    user_appointments = user.meetings.where(start_date: start_date, start_time: start_time)
     if user_appointments.any?
       record.errors.add(
         :user_meeting,
