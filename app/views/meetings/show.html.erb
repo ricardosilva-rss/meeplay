@@ -20,7 +20,7 @@
       <p><i class="fa fa-regular fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date %></p>
     </div>
     <div class="text-center">
-      <p>waiting for <%= @meeting.players_wanted %> players</p>
+      <p>Total players: <%= @meeting.players_wanted %></p>
         <% @meeting.users.each do |user| %>
          <%= user.email %>
         <% end %>
@@ -53,10 +53,11 @@
           </div>
         <% end %>
       <% end %>
-    <%# TODO: Add if-statement to make sure button only shows up for people in the meeting %>
-    <div class="d-flex justify-content-center py-3">
-      <%= link_to 'chat', chatroom_path(@meeting.chatroom), class:'a_btn' %>
-    </div>
+      <% if policy(@meeting.chatroom).show? %>
+        <div class="d-flex justify-content-center py-3">
+          <%= link_to 'chat', chatroom_path(@meeting.chatroom), class:'a_btn' %>
+        </div>
+      <% end %>
     <div class="d-flex justify-content-center py-3">
       <%= link_to 'back', meetings_path, class:'b_btn' %>
     </div>

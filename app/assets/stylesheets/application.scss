@@ -37,4 +37,9 @@ body {
 body a {
   text-decoration: none;
   color: $light-purple;
+
+  &:hover {
+    text-decoration: none;
+    color: $light-purple;
+  }
 }
