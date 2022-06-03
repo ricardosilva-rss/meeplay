@@ -12,7 +12,8 @@ data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>">
   %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@chatroom.meeting.name}",
+      placeholder: "message ##{@chatroom.meeting.name}",
+      input_html: {class: "form-control form-radius"},
       wrapper_html: {class: "flex-grow-1"}
     %>
   <%# <%= f.submit "Send", class: "btn btn-primary" %>
