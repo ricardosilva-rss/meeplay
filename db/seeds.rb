@@ -90,7 +90,7 @@ boardgame10 = Boardgame.all.sample
 meeting_raimundo_2 = Meeting.create!(user: raimundo, boardgame: boardgame10, start_date: 20220614,
   start_time: Time.new(2022, 6, 14, 16, 00, 0),
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame10.name}", chatroom: Chatroom.create!, players_wanted: 1,
+  name: "#{boardgame10.name}", chatroom: Chatroom.create!, players_wanted: 2,
   address: "Lisboa, Avenida 5 de Outubro"
 )
 
@@ -130,7 +130,7 @@ boardgame15 = Boardgame.all.sample
 meeting_ricardo_3 = Meeting.create!(user: ricardo, boardgame: boardgame15, start_date: 20220625,
   start_time: Time.new(2022, 6, 25, 18, 00, 0),
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame15.name} evening", chatroom: Chatroom.create!, players_wanted: 3,
+  name: "#{boardgame15.name} evening", chatroom: Chatroom.create!, players_wanted: 4,
   address: "Lisboa, Rua do Conde Redondo"
 )
 
@@ -142,14 +142,22 @@ meeting_ricardo_4 = Meeting.create!(user: ricardo, boardgame: boardgame16, start
   address: "Lisboa, Rossio"
 )
 
-# UserMeeting.create!(user: guy, meeting: meeting_jose_2)
-# UserMeeting.create!(user: guy, meeting: meeting_raimundo_3)
-# UserMeeting.create!(user: guy, meeting: meeting_ricardo_3)
-# UserMeeting.create!(user: guy, meeting: meeting_ricardo_4)
+UserMeeting.create!(user: guy, meeting: meeting_jose_2)
+UserMeeting.create!(user: guy, meeting: meeting_raimundo_3)
+UserMeeting.create!(user: guy, meeting: meeting_ricardo_3)
+UserMeeting.create!(user: guy, meeting: meeting_ricardo_4)
 
-# UserMeeting.create!(user: jose, meeting: meeting_guy_3)
-# UserMeeting.create!(user: jose, meeting: meeting_guy_2)
-# UserMeeting.create!(user: jose, meeting: meeting_raimundo_4)
-# UserMeeting.create!(user: jose, meeting: meeting_ricardo_4)
+UserMeeting.create!(user: jose, meeting: meeting_guy_3)
+UserMeeting.create!(user: jose, meeting: meeting_guy_2)
+UserMeeting.create!(user: jose, meeting: meeting_raimundo_4)
+UserMeeting.create!(user: jose, meeting: meeting_ricardo_3)
 
-# UserMeeting.create!(user: raimundo, meeting: meeting_ricardo_4)
+UserMeeting.create!(user: raimundo, meeting: meeting_guy_4)
+UserMeeting.create!(user: raimundo, meeting: meeting_jose_1)
+UserMeeting.create!(user: raimundo, meeting: meeting_jose_2)
+UserMeeting.create!(user: raimundo, meeting: meeting_ricardo_3)
+
+UserMeeting.create!(user: ricardo, meeting: meeting_guy_1)
+UserMeeting.create!(user: ricardo, meeting: meeting_jose_3)
+UserMeeting.create!(user: ricardo, meeting: meeting_raimundo_1)
+UserMeeting.create!(user: ricardo, meeting: meeting_raimundo_2)
