@@ -26,6 +26,9 @@ class Meeting < ApplicationRecord
     tsearch: { prefix: true }
   }
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   private
 
   def create_user_meeting
