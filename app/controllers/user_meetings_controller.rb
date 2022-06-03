@@ -6,9 +6,9 @@ class UserMeetingsController < ApplicationController
     @user_meeting = UserMeeting.new(user: @user, meeting: @meeting)
     authorize @user_meeting
     if @user_meeting.save
-      redirect_to meeting_path(@meeting), notice: 'Meeting was successfully joined.'
+      redirect_to meeting_path(@meeting), notice: 'Meeting was successfully joined.' and return
     else
-      render "meetings/show"
+      redirect_to meeting_path(@meeting), notice: 'Meeting can\'t be joined.' and return
     end
   end
 
