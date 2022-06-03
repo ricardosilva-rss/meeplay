@@ -1,5 +1,6 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
+@import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
 // @import "font-awesome-sprockets";
 // @import "font-awesome";
 
@@ -36,4 +37,9 @@ body {
 body a {
   text-decoration: none;
   color: $light-purple;
+
+  &:hover {
+    text-decoration: none;
+    color: $light-purple;
+  }
 }

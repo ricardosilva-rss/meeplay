@@ -1,15 +1,16 @@
 <%= simple_form_for(meeting) do |f| %>
   <%= f.input :name, label: "name" %>
-  <% # add default boardgame.name %>
   <%= f.association :boardgame, label: "boardgame", input_html: { data: { controller: 'select2' } } %>
-  <% # make it a list from api and update list as you write %>
-  <%= f.input :start_date, label: "date" %>
-  <%# <%= f.input :start_time %>
-  <%= f.input :start_time, label: "time" %>
-  <%= f.input :address, label: "address" %>
-  <% # make it a list from gem and update list as you write %>
-  <%= f.input :players_wanted, label: "players needed", collection: 1..10 %>
-  <% # should actually be updated to only show the max players of game %>
+  <div data-controller='flatpickr'>
+    <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr'} %>
+    <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr'} %>
+  </div>
+  <div data-controller='geocoder'>
+    <%= f.input :address, label: "address",
+                input_html: { data: { geocoder_target: "address" } },
+                wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } } %>
+  </div>
+  <%= f.input :players_wanted, label: "total players", collection: 1..10 %>
   <%= f.input :user_is_owner, label: "i own the game"%>
   <%= f.input :description, label: "comments" %>
   <div class="btn-container">
