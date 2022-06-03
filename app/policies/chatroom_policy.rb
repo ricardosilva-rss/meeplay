@@ -7,6 +7,6 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    UserMeeting.where(meeting: record.meeting).include?(user)
+    user.in? record.meeting.users
   end
 end
