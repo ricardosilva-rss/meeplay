@@ -17,6 +17,22 @@
     }
 }
 
+.darkened-card {
+  background: linear-gradient(rgba(187, 187, 187, 0.3), rgba(187, 187, 187, 0.3));
+  img {
+    mask-image: linear-gradient(rgba(187, 187, 187, 0.3), rgba(187, 187, 187, 0.3));
+  }
+  h2 {
+    color: $meeplay-gray !important;
+  }
+  p {
+    color: $meeplay-gray;
+    &:hover {
+      color: $meeplay-gray;
+    }
+  }
+}
+
 .card-product-infos {
   margin: 14px 12px;
   p {
