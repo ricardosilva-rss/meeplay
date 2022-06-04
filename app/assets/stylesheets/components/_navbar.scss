@@ -15,12 +15,31 @@
   border: none;
 }
 
+.navbar-top .dropdown {
+  width: 47px;
+  display: flex;
+  justify-content: center;
+}
+
 .navbar-brand {
-  // position: relative;
-  // left: 50vw;
-  // display: block;
-  // margin: auto;
+  flex: 1;
+  display: flex;
+  justify-content: center;
   margin: 0;
+}
+
+.back-arrow {
+  width: 47px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 0;
+  h1 {
+    color: $meeplay-gray;
+    margin: 0;
+    font-size: 30px;
+  }
 }
 
 .dropdown-menu{
@@ -36,6 +55,7 @@
 
 .navbar-top {
   background: transparent !important;
-  margin-bottom: 29px;
+  margin-bottom: 15px;
   margin-top: 10px;
+  display: flex;
 }
