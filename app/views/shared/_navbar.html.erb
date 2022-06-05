@@ -1,28 +1,27 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-top" data-controller="dropdown">
-  <div class="col-4">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon navbar-top px-3" data-controller="dropdown">
+  <div class="back-arrow">
+    <%= link_to :back do %>
+      <h1><</h1>
+    <% end %>
   </div>
-  <div class="container-fluid col-8 d-flex justify-content-between">
-    <%= link_to meetings_path, class: "navbar-brand" do %>
+  <div class="navbar-brand">
+    <%= link_to meetings_path do %>
       <%= render 'shared/meeple_svg' %>
     <% end %>
-
-    <div class="dropdown">
-      <a class="btn text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-        <%= render 'shared/navbar_toggler' %>
-      </a>
-
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <% if user_signed_in? %>
-          <%= link_to "my meetings", my_meetings_path, class: "dropdown-item" %>
-          <%# <%= link_to "my boardgames", "#", class: "dropdown-item" %>
-          <%= link_to "boardgames", boardgames_path, class: "dropdown-item" %>
-          <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+  </div>
+  <div class="dropdown">
+    <a class="btn text-light" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= render 'shared/navbar_toggler' %>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <% if user_signed_in? %>
+        <%= link_to "my meetings", my_meetings_path, class: "dropdown-item" %>
+        <%# <%= link_to "my boardgames", "#", class: "dropdown-item" %>
+        <%= link_to "boardgames", boardgames_path, class: "dropdown-item" %>
+        <%= link_to "log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
         <% else %>
-          <%= link_to "log in", "#", class: "dropdown-item" %>
-        <% end %>
-      </ul>
-    </div>
-
-    </div>
+         <%= link_to "log in", "#", class: "dropdown-item" %>
+      <% end %>
+    </ul>
   </div>
 </div>
