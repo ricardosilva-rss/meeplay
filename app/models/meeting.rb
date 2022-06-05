@@ -12,7 +12,7 @@ class Meeting < ApplicationRecord
   validates :address, presence: true
   validates :user_is_owner, presence: true
   validates :name, presence: true
-  validate :meeting_cannot_have_more_players_than_game_allows, on: :create
+  validate :meeting_cannot_have_more_players_than_game_allows, on: create:
 
   after_create :create_user_meeting
 
@@ -31,8 +31,8 @@ class Meeting < ApplicationRecord
   # after_validation :geocode, if: :will_save_change_to_address?
 
   def meeting_cannot_have_more_players_than_game_allows
-    if self.users > self.boardgame.max_players
-      errors.add(:users, "can't be more than the game allows")
+    if  self.players_wanted > self.boardgame.max_players
+      errors.add(:players_wanted, "can't have more players than the game allows")
     end
   end
 
