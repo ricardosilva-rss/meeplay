@@ -15,27 +15,38 @@
       <%= cl_image_tag @meeting.boardgame.photo.key, width: '75%', class: 'game-photo my-4'%>
     </div>
     <% end %>
-    <div class="d-flex justify-content-between px-3">
-      <p><i class="fa fa-solid fa-map-pin" style="color: #A380BD"></i> <%= @meeting.address %></p>
-      <p><i class="fa fa-regular fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date %></p>
+
+    <div class="text-center px-3">
+      <p><i class="fa fa-solid fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date.strftime('%A, %d %B %Y') %>, <%= @meeting.start_time.strftime("%k:%M")%></p>
+      <p><i class="fa fa-solid fa-location-dot" style="color: #A380BD"></i> <%= @meeting.address %></p>
     </div>
     <div class="text-center">
-      <p>Total players: <%= @meeting.players_wanted %></p>
-        <% @meeting.users.each do |user| %>
-         <%= user.email %>
-        <% end %>
+    <% @meeting.users.count.times do %>
+      <%= render 'shared/small_meeple'%>
+    <% end %>
+    <% (@meeting.players_wanted - @meeting.users.count).times do %>
+      <%=render 'shared/small_gray_meeple' %>
+    <% end %>
+      <% if @meeting.full? %>
+        <p style="color: #BBBBBB">(Meeting is full)</p>
+      <% else %>
+        <p style="color: #BBBBBB">(Waiting for <%= (@meeting.players_wanted - @meeting.users.count) %>/<%= @meeting.players_wanted %> players)</p>
+      <% end %>
+      <% @meeting.users.each do |user| %>
+        <p><%= user.email %></p>
+      <% end %>
     </div>
     <div class="text-justify pt-3">
       <p style="color: #A380BD" class="mb-0">comments:</p>
       <p style="color: #BBBBBB; text-align: justify" ><%= @meeting.description%></p>
     </div>
-      <% unless @meeting.users.find_by(id: current_user.id).present? %>
-        <div class="d-flex justify-content-center py-3">
-          <%= simple_form_for [@meeting, @user_meeting] do |f| %>
-            <%= f.submit "join", class: "a_btn" %>
-          <% end %>
-        </div>
-      <% end %>
+    <% unless @meeting.users.find_by(id: current_user.id).present? || @meeting.full? %>
+      <div class="d-flex justify-content-center py-3">
+        <%= simple_form_for [@meeting, @user_meeting] do |f| %>
+          <%= f.submit "join", class: "a_btn" %>
+        <% end %>
+      </div>
+    <% end %>
       <% if policy(@meeting).edit? %>
         <div class="d-flex justify-content-center py-3">
           <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn' %>
@@ -47,7 +58,7 @@
         </div>
       <% end %>
       <% if @user_meeting.present? %>
-        <% if policy(@user_meeting).destroy? %>
+        <% if policy(@user_meeting).destroy? && (@meeting.user != current_user) %>
           <div class="d-flex justify-content-center py-3">
             <%= link_to 'leave meeting', user_meeting_path(@user_meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
           </div>

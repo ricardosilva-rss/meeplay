@@ -29,6 +29,10 @@ class Meeting < ApplicationRecord
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
 
+  def full?
+    self.players_wanted == self.users.count
+  end
+
   private
 
   def create_user_meeting
