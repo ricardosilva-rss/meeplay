@@ -5,6 +5,7 @@
     <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr'} %>
     <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr'} %>
   </div>
+
   <div data-controller='geocoder'>
     <%= f.input :address,
               input_html: { data: { geocoder_target: "address" }, class: "d-none" },

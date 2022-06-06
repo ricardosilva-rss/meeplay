@@ -23,10 +23,10 @@ class MeetingsController < ApplicationController
 
     @user_meeting = UserMeeting.new unless @user_meeting.present?
 
-    @marker = @meeting.geocode.map do |meeting|
+    @marker = @meeting.geocode.map do
       {
-        lat: meeting.latitude,
-        lng: meeting.longitude,
+        lat: @meeting.latitude,
+        lng: @meeting.longitude
       }
     end
   end
