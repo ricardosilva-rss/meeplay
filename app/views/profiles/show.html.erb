@@ -1,6 +1,7 @@
 <h1>Profile</h1>
 
 <%= @profile.name %>
+<%= cl_image_tag @profile.photo.key %>
 <%= @profile.date_of_birth %>
 <%= @profile.description %>
 <%= @profile.bgg_profile %>
