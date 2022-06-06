@@ -14,12 +14,18 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/navbar' %>
+    <% else %>
+      <div class='empty-space'></div>
+    <% end %>
     <%= render 'shared/flashes' %>
 
 
     <%= yield %>
     <div style="height: 100px"></div>
-    <%= render 'partials/navbarbottom' %>
+    <% if user_signed_in? %>
+      <%= render 'partials/navbarbottom' %>
+    <% end %>
   </body>
 </html>
