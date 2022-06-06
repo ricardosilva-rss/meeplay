@@ -26,6 +26,10 @@ class MeetingPolicy < ApplicationPolicy
     true
   end
 
+  def calendar?
+    true
+  end
+
   private
 
   def owner_or_admin?

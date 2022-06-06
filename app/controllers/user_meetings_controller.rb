@@ -1,5 +1,6 @@
 class UserMeetingsController < ApplicationController
   before_action :set_user_meeting, only: [:destroy]
+
   def create
     @meeting = Meeting.find(params[:meeting_id])
     @user = current_user
