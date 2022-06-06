@@ -1,23 +1,25 @@
 // Specific CSS for your home-page
-.container-picture {
-  display: flex;
-  justify-content: center;
-  padding: 50px;
-}
-
-.container-picture img {
-  width: 200px;
+#banner {
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1611891487122-207579d67d98?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80");
+  background-size: cover;
 }
 
 .container-meeplay {
   display: flex;
   justify-content: center;
-  padding-top: 20px;
+  padding-top: 30px;
+  h1 {
+    font-size: 50px;
+  }
 }
 
 .container-catch-frase {
   display: flex;
   justify-content: center;
+  h2 {
+    font-size: 20px;
+  }
 }
 
 .container-btn {
