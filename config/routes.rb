@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
   resources :profiles, only: [:show, :new, :create, :edit, :update]
   get 'my_meetings', to: "meetings#my_meetings"
+  get 'calendar', to: 'meetings#calendar'
 end
