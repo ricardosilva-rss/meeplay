@@ -19,7 +19,12 @@
       <% else %>
         <%= @boardgame.min_time %>
       <% end %> min </p>
-      <p><i class="fa-solid fa-users" style="color: #A380BD"></i> <%= @boardgame.max_players %> players</p>
+      <p><i class="fa-solid fa-users" style="color: #A380BD"></i>
+      <% if @boardgame.min_players != @boardgame.max_players %>
+        <%= @boardgame.min_players %> - <%= @boardgame.max_players %>
+      <% else %>
+        <%= @boardgame.max_players %>
+      <% end %> players </p>
        <p><i class="fa-solid fa-clipboard-list" style="color: #A380BD"></i> <%= @boardgame.complexity %>/10</p>
         <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating %>/10</p>
     </div>

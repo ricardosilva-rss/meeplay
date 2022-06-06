@@ -16,9 +16,13 @@
                 <% else %>
                   <%= boardgame.min_time %>
                 <% end %> min </p>
-                <p style="color: #BBBBBB"><i class="fa-solid fa-users"></i><%= boardgame.max_players %></p>
+                <p style="color: #BBBBBB"><i class="fa-solid fa-users"></i>
+                <% if boardgame.min_players != boardgame.max_players %>
+                  <%= boardgame.min_players %> - <%= boardgame.max_players %>
+                <% else %>
+                  <%= boardgame.max_players %>
+                <% end %> players </p>
               </div>
-
           </div>
         </div>
       <% end %>

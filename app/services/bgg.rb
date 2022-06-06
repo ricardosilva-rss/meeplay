@@ -11,8 +11,8 @@ class Bgg
   def call
     CSV.foreach(@filepath, headers: :first_row, header_converters: :symbol) do |row|
       boardgame = Boardgame.create(bgg_id: row[:bgg_id], name: row[:name],
-                      max_players: row[:max_players].to_i, rating: row[:avg_rating].to_f,
-                      complexity: row[:complexity].to_f, min_time: row[:min_time].to_i,
+                      min_players: row[:min_players].to_i, max_players: row[:max_players].to_i,
+                      rating: row[:avg_rating].to_f, complexity: row[:complexity].to_f, min_time: row[:min_time].to_i,
                       max_time: row[:max_time].to_i
                       )
     get_picture(boardgame)
