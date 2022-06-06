@@ -2,16 +2,12 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy, ]
 
   def index
-    city = current_user.profile.geocode
     if params[:query].present?
-      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query]))
-      @meetings = @meetings.sort_by { |meeting| meeting.start_date }
-      @meetings = @meetings.sort_by { |meeting| meeting.start_time }
+      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query])).sort_by { |meeting| meeting.distance_to(current_user.profile.city) }
     else
-      @meetings = policy_scope(Meeting)
-      @meetings = @meetings.sort_by { |meeting| meeting.start_date }
-      @meetings = @meetings.sort_by { |meeting| meeting.start_time }
-      @meetings = @meetings.sort_by { |meeting| meeting.distance_to_user(current_user) }
+      nearby_meetings = policy_scope(Meeting).order(start_date: :asc).order(start_time: :asc).near(current_user.profile.city)
+      other_meetings = policy_scope(Meeting).near(current_user.profile.city, 5000) - nearby_meetings
+      @meetings = nearby_meetings + other_meetings
     end
 
     respond_to do |format|
@@ -91,19 +87,4 @@ class MeetingsController < ApplicationController
     authorize @meeting
   end
 
-  def sort_by_fullness
-    self.sort { |a, b| !a.full? <=> b.full? }
-  end
-
-  def sort_by_location
-    city = current_user.profile.geocode
-    self.sort { |a, b|
-      Geocoder::Calculations.distance_between(city, a.geocode) <=> Geocoder::Calculations.distance_between(city, b.geocode)
-    }
-  end
-
-  def sort_by_date_and_time
-    meetings_by_date = self.sort { |a, b| a.start_date <=> b.start_date }
-    meetings_by_date.sort { |a, b| a.start_time <=> b.start_time }
-  end
 end
