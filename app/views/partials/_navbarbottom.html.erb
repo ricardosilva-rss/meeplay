@@ -7,8 +7,8 @@
         <%= render 'shared/house' %>
       <% end %>
     <% end %>
-    <%= link_to(my_meetings_path , class:'nav-link') do %>
-      <% if params[:controller] == 'meetings' && params[:action] == 'my_meetings' %>
+    <%= link_to(calendar_path , class:'nav-link') do %>
+      <% if params[:controller] == 'meetings' && params[:action] == 'calendar' %>
         <i class="fa-solid fa-calendar calendar_btn"></i>
       <% else %>
         <i class="fa-regular fa-calendar calendar_btn"></i>
