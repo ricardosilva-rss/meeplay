@@ -31,6 +31,7 @@ jose_profile = Profile.create!(
                 date_of_birth: Date.new(1998, 1, 1)
 )
 file2 = URI.open('https://avatars.githubusercontent.com/u/99876826?v=4')
+jose_profile.photo.attach(io: file2, filename: 'jose.jpg', content_type: 'image/png')
 
 raimundo_profile = Profile.create!(
                 user: raimundo,
@@ -38,6 +39,9 @@ raimundo_profile = Profile.create!(
                 description: "I've been studying philosophy and literary theory for the past years and want to look for other opportunities and to develop my passion for technology.",
                 date_of_birth: Date.new(1991, 1, 17)
 )
+file3 = URI.open('https://avatars.githubusercontent.com/u/100690574?v=4')
+raimundo_profile.photo.attach(io: file3, filename: 'raimundo.jpg', content_type: 'image/jpg')
+
 
 ricardo_profile = Profile.create!(
                 user: ricardo,
@@ -45,6 +49,9 @@ ricardo_profile = Profile.create!(
                 description: "After years of doing administrative work and some acting, I am now looking for a change. Always liked computers and videogames, so coding just felt right...",
                 date_of_birth: Date.new(1991, 1, 1)
 )
+file4 = URI.open('https://avatars.githubusercontent.com/u/97455167?v=4')
+ricardo_profile.photo.attach(io: file4, filename: 'ricardo.jpg', content_type: 'image/jpg')
+
 
 boardgame1 = Boardgame.all.sample
 meeting_guy_1 = Meeting.create!(user: guy, boardgame: boardgame1, start_date:20220610,
