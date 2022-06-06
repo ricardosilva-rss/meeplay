@@ -10,7 +10,12 @@
             <h2><%= boardgame.name %></h2>
             <div class="d-flex justify-content-between boardgame-padding">
                 <%# <p style="color: #BBBBBB"><%= boardgame.rating %></p>
-                <p style="color: #BBBBBB"><i class="fa-solid fa-clock"></i><%= boardgame.avg_duration %>(min)</p>
+                <p style="color: #BBBBBB"><i class="fa-solid fa-clock"></i>
+                <% if boardgame.min_time != boardgame.max_time %>
+                  <%= boardgame.min_time %> - <%= boardgame.max_time %>
+                <% else %>
+                  <%= boardgame.min_time %>
+                <% end %> min </p>
                 <p style="color: #BBBBBB"><i class="fa-solid fa-users"></i><%= boardgame.max_players %></p>
               </div>
 
