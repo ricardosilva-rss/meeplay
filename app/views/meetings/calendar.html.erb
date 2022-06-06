@@ -1,0 +1,9 @@
+<h1>calendar</h1>
+
+<% @meetings.order(:start_date).each do |meeting| %>
+  <div>
+    <%= meeting.start_date %>
+    <%= meeting.start_time.strftime("%k:%M") %>
+    <%= link_to meeting.name, meeting_path(meeting) %>
+  </div>
+<% end %>
