@@ -1,13 +1,34 @@
 <div id="banner">
+  <h2>find people. meet. play.</h2>
 </div>
 <div class="container-meeplay">
-  <%= render 'shared/meeple_svg' %>
+  <%= render 'partials/logo_landingpage' %>
 </div>
 <div class="container-catch-frase">
-  <h2>find people. meet. play.</h2>
+  <h2>Do you want to play your favourite boardgame but you're missing a player or two? With meeplay you can look for other players in your area and meet with then. Play away!</h2>
 </div>
 <div class="container-btn">
   <div>
     <%= link_to 'start now', meetings_path, class: 'a_btn' %>
   </div>
+</div>
+<div class="px-4" data-controller="search-meetings">
+
+  <div class="search-bar">
+  <i class="fas fa-search fs-6"></i>
+    <%= form_with url: meetings_path, method: :get,
+        html: { class: '', data: { search_meetings_target: 'form' } } do %>
+      <%= text_field_tag :query,
+          params[:query],
+          class: "form-control ps-5 form-radius",
+          placeholder: "search meetings in your city",
+          value: params[:query],
+          data: {
+            search_meetings_target: 'input',
+            action: 'keyup->search-meetings#update'
+            }
+      %>
+    <% end %>
+  </div>
+  <%= render 'list', meetings: @meetings %>
 </div>
