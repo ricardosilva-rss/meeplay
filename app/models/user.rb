@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :profile
+  has_one :profile, dependent: :destroy
   has_many :owned_meetings, foreign_key: "user_id", class_name: "Meeting"
   has_many :user_meetings
   has_many :meetings, through: :user_meetings
