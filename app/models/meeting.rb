@@ -40,11 +40,6 @@ class Meeting < ApplicationRecord
     self.players_wanted == self.users.count
   end
 
-  def distance_to_user(user)
-    user_location = user.profile.geocode
-    Geocoder::Calculations.distance_between(user_location, self.geocode)
-  end
-
   private
 
   def create_user_meeting
