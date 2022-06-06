@@ -1,0 +1,31 @@
+.sent-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  p {
+    width: fit-content;
+    padding: 10px 5%;
+    background-color: $purple;
+    color: white;
+    border-radius: 20px;
+    margin: 0;
+    box-shadow: 0px -3px 24px 2px rgba(102, 44, 145, 0.1);
+  }
+}
+
+.received-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  p {
+    width: fit-content;
+    padding: 10px 5%;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    margin: 0;
+    box-shadow: 0px -3px 24px 2px rgba(102, 44, 145, 0.1);
+
+  }
+
+}

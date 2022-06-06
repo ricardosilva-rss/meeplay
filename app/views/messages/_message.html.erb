@@ -1,4 +1,4 @@
-<div id="message-<%= message.id %>" class="<%=  %>">
+<div id="message-<%= message.id %>" class="<% if message.user == current_user %> text-end sent-message <% else %> text-start received-message <% end %>">
   <small>
     <strong><%= message.user.email %></strong>
     <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
