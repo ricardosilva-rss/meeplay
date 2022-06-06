@@ -5,10 +5,13 @@ class MeetingsController < ApplicationController
     city = current_user.profile.geocode
     if params[:query].present?
       @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query]))
-      @meetings.sort { |a, b| a.distance_to_user <=> b.distance_to_user }
+      @meetings = @meetings.sort_by { |meeting| meeting.start_date }
+      @meetings = @meetings.sort_by { |meeting| meeting.start_time }
     else
       @meetings = policy_scope(Meeting)
-      @meetings.sort { |a, b| a.distance_to_user(current_user) <=> b.distance_to_user(current_user) }
+      @meetings = @meetings.sort_by { |meeting| meeting.start_date }
+      @meetings = @meetings.sort_by { |meeting| meeting.start_time }
+      @meetings = @meetings.sort_by { |meeting| meeting.distance_to_user(current_user) }
     end
 
     respond_to do |format|
