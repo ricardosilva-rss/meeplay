@@ -1,0 +1,18 @@
+<%= simple_form_for(profile) do |f| %>
+  <%= f.input :name, label: "name" %>
+  <%= f.input :date_of_birth, label: "date of bith" %>
+  <%= f.input :description, label: "about me" %>
+  <%= f.input :bgg_profile, label: "BGG profile" %>
+  <%= f.input :photo, as: :file, label: "photo" %>
+  <div class="btn-container">
+    <% if profile.new_record? %>
+      <div class="form-actions a_btn">
+        <%= f.button :submit, "create", class: "a_btn" %>
+      </div>
+    <% else %>
+      <div class="form-actions a_btn">
+        <%= f.button :submit, "update", class: "a_btn" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
