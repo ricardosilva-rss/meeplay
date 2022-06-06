@@ -2,10 +2,13 @@ class MeetingsController < ApplicationController
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy, ]
 
   def index
+    city = current_user.profile.geocode
     if params[:query].present?
       @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query]))
+      @meetings.sort { |a, b| a.distance_to_user <=> b.distance_to_user }
     else
-      @meetings = policy_scope(Meeting).sample(10)
+      @meetings = policy_scope(Meeting)
+      @meetings.sort { |a, b| a.distance_to_user(current_user) <=> b.distance_to_user(current_user) }
     end
 
     respond_to do |format|
@@ -83,5 +86,21 @@ class MeetingsController < ApplicationController
   def set_meeting
     @meeting = Meeting.find(params[:id])
     authorize @meeting
+  end
+
+  def sort_by_fullness
+    self.sort { |a, b| !a.full? <=> b.full? }
+  end
+
+  def sort_by_location
+    city = current_user.profile.geocode
+    self.sort { |a, b|
+      Geocoder::Calculations.distance_between(city, a.geocode) <=> Geocoder::Calculations.distance_between(city, b.geocode)
+    }
+  end
+
+  def sort_by_date_and_time
+    meetings_by_date = self.sort { |a, b| a.start_date <=> b.start_date }
+    meetings_by_date.sort { |a, b| a.start_time <=> b.start_time }
   end
 end
