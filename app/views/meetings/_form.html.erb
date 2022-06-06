@@ -8,7 +8,7 @@
 
   <div data-controller='geocoder'>
     <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" }, class: "d-none" },
+              input_html: { data: { geocoder_target: "address" }, class: "" },
               wrapper_html: { data: { controller: "geocoder", geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }
     %>
   </div>
