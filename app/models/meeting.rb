@@ -27,8 +27,8 @@ class Meeting < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-  # geocoded_by :address
-  # after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def meeting_cannot_have_more_players_than_game_allows
     if  self.players_wanted > self.boardgame.max_players
