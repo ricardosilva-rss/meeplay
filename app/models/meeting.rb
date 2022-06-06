@@ -12,7 +12,7 @@ class Meeting < ApplicationRecord
   validates :address, presence: true
   validates :user_is_owner, presence: true
   validates :name, presence: true
-  validate :meeting_cannot_have_more_players_than_game_allows, on: create:
+  validate :meeting_cannot_have_more_players_than_game_allows, on: :create
 
   after_create :create_user_meeting
 
