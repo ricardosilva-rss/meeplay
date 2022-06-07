@@ -1,0 +1,6 @@
+<%= simple_form_for(user_boardgame) do |f| %>
+  <%= f.association :boardgame, label: "boardgame", input_html: { class: 'select2' } %>
+  <div class="form-actions d-flex justify-content-center">
+    <%= f.button :submit, "add", class: "a_btn" %>
+  </div>
+<% end %>
