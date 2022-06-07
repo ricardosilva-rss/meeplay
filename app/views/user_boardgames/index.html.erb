@@ -1,0 +1,14 @@
+<div class="px-4">
+  <h1>my boardgames</h1>
+  <% @user_boardgames.each do |user_boardgame| %>
+    <%= link_to boardgame_path(user_boardgame.boardgame) do %>
+      <div class="card-product">
+        <div class="card-product-infos" >
+          <div class="d-flex justify-content-between align-items-center">
+            <h2><%= user_boardgame.boardgame.name %></h2>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
