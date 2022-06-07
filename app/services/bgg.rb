@@ -15,12 +15,12 @@ class Bgg
                       rating: row[:avg_rating].to_f, complexity: row[:complexity].to_f, min_time: row[:min_time].to_i,
                       max_time: row[:max_time].to_i
                       )
-    get_picture(boardgame)
+    get_picture_and_description(boardgame)
     end
     p "finished getting info from BBG"
   end
 
-  def get_picture(boardgame)
+  def get_picture_and_description(boardgame)
     xml_url = "https://api.geekdo.com/xmlapi2/thing?id=#{boardgame.bgg_id}"
     html_file = URI.open(xml_url).read
     document = Nokogiri::XML(html_file)
