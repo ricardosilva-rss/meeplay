@@ -5,9 +5,11 @@ class MeetingsController < ApplicationController
 
   def index
     if params[:query].present?
-      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query]))
+      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query])).near(current_user.profile.city, 8000)
     else
-      @meetings = policy_scope(Meeting).sample(10)
+      nearby_meetings = policy_scope(Meeting).order(start_date: :asc).order(start_time: :asc).near(current_user.profile.city)
+      other_meetings = policy_scope(Meeting).near(current_user.profile.city, 5000) - nearby_meetings
+      @meetings = nearby_meetings + other_meetings
     end
 
     respond_to do |format|
@@ -86,4 +88,5 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     authorize @meeting
   end
+
 end

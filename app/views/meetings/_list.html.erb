@@ -1,7 +1,7 @@
 <div data-search-meetings-target="list">
   <% meetings.each do |meeting| %>
       <%= link_to meeting_path(meeting) do %>
-        <div class="card-product <%= "darkened-card" if meeting.full? %>">
+        <div class="card-product"  style="min-height: 120px;" <%= "darkened-card" if meeting.full? %>">
           <%= cl_image_tag meeting.boardgame.photo.key, width: 96 %>
           <div class="card-product-infos">
             <div style="width: 215px"></div>
@@ -11,8 +11,9 @@
                 <% else %>
                   <%= render 'shared/small_meeple' %>
                 <% end %>
-              <span style="padding: 3px"><%= h truncate(meeting.user.email, :length => 50) %></span></p>
-              <h2><%= meeting.name %></h2>
+              <span style="padding: 3px"></span></p>
+
+              <h2><%= meeting.name %><%= h truncate(meeting.user.email, :length => 7) %></h2>
               <div class="d-flex justify-content-between">
                 <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= h truncate(meeting.address, :length => 10) %></p>
                 <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b %Y') %> <%= meeting.start_time.strftime("%k:%M")%></p>
@@ -20,5 +21,9 @@
           </div>
         </div>
       <% end %>
-    <% end %>
+  <% end %>
 </div>
+
+
+<%# <%= h truncate(meeting.user.email, :length => 50) %>
+<%# style="padding: 3px" %>

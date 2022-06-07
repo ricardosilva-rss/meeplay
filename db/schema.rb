@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_214937) do
+ActiveRecord::Schema.define(version: 2022_06_06_215920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_214937) do
     t.integer "min_time"
     t.integer "max_time"
     t.integer "min_players"
+    t.text "description"
   end
 
   create_table "chatrooms", force: :cascade do |t|
