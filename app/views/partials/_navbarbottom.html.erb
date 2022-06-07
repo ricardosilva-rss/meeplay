@@ -26,11 +26,11 @@
     <% end %>
 
     <%= link_to(profile_path(current_user.profile), class:'nav-link') do %>
-      <% if params[:controller] == 'profiles' %>
+       <% if params[:controller] == 'profiles' %>
         <i class="fa-solid fa-user avatar_btn "></i>
-      <% else %>
-        <i class="fa-regular fa-user avatar_btn "></i>
-      <% end %>
+       <% else %>
+         <i class="fa-regular fa-user avatar_btn "></i>
+       <% end %>
     <% end %>
   </div>
 </div>

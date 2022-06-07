@@ -1,9 +1,14 @@
 <h1>calendar</h1>
 
-<% @meetings.order(:start_date).each do |meeting| %>
+<!-- .group_by { |meeting| meeting.date } -->
+
+<% @meetings.order(:start_date).group_by(&:start_date).each do |date, meetings| %>
   <div>
-    <%= meeting.start_date %>
-    <%= meeting.start_time.strftime("%k:%M") %>
-    <%= link_to meeting.name, meeting_path(meeting) %>
+    <p><%= date %></p>
+    <% meetings.each do |meeting| %>
+      <%= meeting.start_date %>
+      <%= meeting.start_time.strftime("%k:%M") %>
+      <%= link_to meeting.name, meeting_path(meeting) %>
+    <% end %>
   </div>
 <% end %>
