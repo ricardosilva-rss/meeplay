@@ -67,7 +67,7 @@ class MeetingsController < ApplicationController
   end
 
   def my_meetings
-    @meetings = policy_scope(current_user.meetings)
+    @meetings = policy_scope(current_user.owned_meetings)
     authorize @meetings
   end
 

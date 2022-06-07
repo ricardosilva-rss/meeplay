@@ -13,8 +13,18 @@
     </div>
     <% end %>
     <div class="d-colum justify-content-between px-3">
-      <p><i class="fa-solid fa-clock" style="color: #A380BD"></i> <%= @boardgame.avg_duration %> (min)</p>
-      <p><i class="fa-solid fa-users" style="color: #A380BD"></i> <%= @boardgame.max_players %> players</p>
+      <p><i class="fa-solid fa-clock" style="color: #A380BD"></i>
+      <% if @boardgame.min_time != @boardgame.max_time %>
+        <%= @boardgame.min_time %> - <%= @boardgame.max_time %>
+      <% else %>
+        <%= @boardgame.min_time %>
+      <% end %> min </p>
+      <p><i class="fa-solid fa-users" style="color: #A380BD"></i>
+      <% if @boardgame.min_players != @boardgame.max_players %>
+        <%= @boardgame.min_players %> - <%= @boardgame.max_players %>
+      <% else %>
+        <%= @boardgame.max_players %>
+      <% end %> players </p>
        <p><i class="fa-solid fa-clipboard-list" style="color: #A380BD"></i> <%= @boardgame.complexity %>/10</p>
         <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating %>/10</p>
     </div>
