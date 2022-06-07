@@ -51,8 +51,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_214937) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "bgg_id"
-    t.string "designer"
-    t.string "artist"
     t.integer "min_time"
     t.integer "max_time"
     t.integer "min_players"
@@ -101,9 +99,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_214937) do
     t.date "date_of_birth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "city"
-    t.float "latitude"
-    t.float "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
