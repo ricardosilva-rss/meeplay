@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_161656) do
+ActiveRecord::Schema.define(version: 2022_06_06_215920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2022_06_06_161656) do
 
   create_table "boardgames", force: :cascade do |t|
     t.string "name"
-    t.integer "avg_duration"
     t.integer "max_players"
     t.float "complexity"
     t.float "rating"
@@ -54,6 +53,10 @@ ActiveRecord::Schema.define(version: 2022_06_06_161656) do
     t.integer "bgg_id"
     t.string "designer"
     t.string "artist"
+    t.integer "min_time"
+    t.integer "max_time"
+    t.integer "min_players"
+    t.text "description"
   end
 
   create_table "chatrooms", force: :cascade do |t|
