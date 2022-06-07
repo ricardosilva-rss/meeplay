@@ -14,11 +14,7 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= render 'shared/navbar' %>
-    <% else %>
-      <div class='empty-space'></div>
-    <% end %>
+    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
 
 

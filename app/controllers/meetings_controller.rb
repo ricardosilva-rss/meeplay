@@ -1,5 +1,7 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: [ :show, :edit, :update, :destroy, ]
+  before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, only: [ :index ]
+
 
   def index
     if params[:query].present?
@@ -65,7 +67,7 @@ class MeetingsController < ApplicationController
   end
 
   def my_meetings
-    @meetings = policy_scope(current_user.meetings)
+    @meetings = policy_scope(current_user.owned_meetings)
     authorize @meetings
   end
 
