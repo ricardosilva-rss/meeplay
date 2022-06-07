@@ -1,19 +1,29 @@
 <%= simple_form_for(meeting) do |f| %>
-  <%= f.input :name, label: "name" %>
-  <%= f.association :boardgame, label: "boardgame", input_html: { data: { controller: 'select2' } } %>
+  <%= f.input :name, label: "name"  %>
+  <%= f.association :boardgame, label: "boardgame", input_html: { data: { controller: 'select2' } }%>
   <div data-controller='flatpickr'>
     <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr'} %>
     <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr'} %>
   </div>
 
-  <div data-controller='geocoder'>
-    <%= f.input :address,
-              input_html: { data: { geocoder_target: "address" }, class: "d-none" },
-              wrapper_html: { data: { controller: "geocoder",
-              geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }
-    %>
+  <div data-controller='min-max-players'>
+    <%= f.association :boardgame, label: "boardgame", input_html: { data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} }, include_blank: false, include_hidden: false %>
+
+    <div data-controller='flatpickr'>
+      <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr'} %>
+      <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr'} %>
+    </div>
+
+    <div data-controller='geocoder'>
+      <%= f.input :address,
+                input_html: { data: { geocoder_target: "address" }, class: "d-none" },
+                wrapper_html: { data: { controller: "geocoder",
+                geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }
+      %>
+    </div>
+    <%= f.input :players_wanted, label: "total players", collection: ['Choose a game first...'], input_html: { data: { min_max_players_target: 'total'} }, include_blank: false, include_hidden: false %>
   </div>
-  <%= f.input :players_wanted, label: "total players", collection: 1..10 %>
+
   <%= f.input :user_is_owner, label: "i own the game"%>
   <%= f.input :description, label: "comments" %>
   <div class="btn-container">
