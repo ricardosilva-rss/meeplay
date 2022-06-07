@@ -14,6 +14,49 @@ jose = User.create(email: "ja.melo321@gmail.com", password: "192021222324")
 raimundo = User.create(email: "raimundo.henriques@gmail.com", password: "123456")
 ricardo = User.create(email: "ricardosilva.rss@gmail.com", password: "789101112")
 
+guy_profile = Profile.create!(
+                user: guy,
+                name: "Guy Gan Baruch",
+                description: "I'm an IT admin want to make a change in the world on the environmental sector. and I like cats and remote controlled helicopters.",
+                date_of_birth: Date.new(1996, 1, 1),
+                city: "Lisbon"
+              )
+file1 = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1652775726/ctcrjpqfgbxallgn9xqr.jpg')
+guy_profile.photo.attach(io: file1, filename: 'guy.jpg', content_type: 'image/jpg')
+
+
+jose_profile = Profile.create!(
+                user: jose,
+                name: "José de Melo",
+                description: "i did social studies at universidade catolica",
+                date_of_birth: Date.new(1998, 1, 1),
+                city: "Lisbon"
+)
+file2 = URI.open('https://avatars.githubusercontent.com/u/99876826?v=4')
+jose_profile.photo.attach(io: file2, filename: 'jose.jpg', content_type: 'image/png')
+
+raimundo_profile = Profile.create!(
+                user: raimundo,
+                name: "Raimundo Henriques",
+                description: "I've been studying philosophy and literary theory for the past years and want to look for other opportunities and to develop my passion for technology.",
+                date_of_birth: Date.new(1991, 1, 17),
+                city: "Lisbon"
+)
+file3 = URI.open('https://avatars.githubusercontent.com/u/100690574?v=4')
+raimundo_profile.photo.attach(io: file3, filename: 'raimundo.jpg', content_type: 'image/jpg')
+
+
+ricardo_profile = Profile.create!(
+                user: ricardo,
+                name: "Ricardo Silva",
+                description: "After years of doing administrative work and some acting, I am now looking for a change. Always liked computers and videogames, so coding just felt right...",
+                date_of_birth: Date.new(1991, 1, 1),
+                city: "Lisbon"
+)
+file4 = URI.open('https://avatars.githubusercontent.com/u/97455167?v=4')
+ricardo_profile.photo.attach(io: file4, filename: 'ricardo.jpg', content_type: 'image/jpg')
+
+
 boardgame1 = Boardgame.all.sample
 meeting_guy_1 = Meeting.create!(user: guy, boardgame: boardgame1, start_date:20220610,
   start_time: Time.new(2022, 6, 10, 16, 00, 0),
@@ -21,6 +64,7 @@ meeting_guy_1 = Meeting.create!(user: guy, boardgame: boardgame1, start_date:202
   name: "let's play #{boardgame1.name}", chatroom: Chatroom.create!, players_wanted: 3,
   address: "Lisboa, Rua do Conde Redondo"
 )
+
 boardgame2 = Boardgame.all.sample
 meeting_guy_2 = Meeting.create!(user: guy, boardgame: boardgame2, start_date: 20220611,
   start_time: Time.new(2022, 6, 11, 18, 00, 0),
@@ -28,6 +72,7 @@ meeting_guy_2 = Meeting.create!(user: guy, boardgame: boardgame2, start_date: 20
   name: "#{boardgame2.name} night", chatroom: Chatroom.create!, players_wanted: 2,
   address: "Porto, Avenida dos Aliados"
 )
+
 boardgame3 = Boardgame.all.sample
 meeting_guy_3 = Meeting.create!(user: guy, boardgame: boardgame3, start_date: 20220616,
   start_time: Time.new(2022, 6, 16, 16, 00, 0),
@@ -42,6 +87,7 @@ meeting_guy_4 = Meeting.create!(user: guy, boardgame: boardgame4, start_date: 20
   name: "#{boardgame4.name}", chatroom: Chatroom.create!, players_wanted: 3,
   address: "Portimão, Infante D. Henrique"
 )
+
 boardgame5 = Boardgame.all.sample
 meeting_jose_1 = Meeting.create!(user: jose, boardgame: boardgame5, start_date: 20220610,
   start_time: Time.new(2022, 6, 10, 16, 00, 0),
@@ -49,7 +95,6 @@ meeting_jose_1 = Meeting.create!(user: jose, boardgame: boardgame5, start_date: 
   name: "Afternoon of #{boardgame5.name}", chatroom: Chatroom.create!, players_wanted: 3,
   address: "Lisboa, Rua do Conde Redondo"
 )
-
 
 boardgame6 = Boardgame.all.sample
 meeting_jose_2 = Meeting.create!(user: jose, boardgame: boardgame6, start_date: 20220612,
@@ -59,7 +104,6 @@ meeting_jose_2 = Meeting.create!(user: jose, boardgame: boardgame6, start_date: 
   address: "Porto, Rua Passos Manuel"
 )
 
-
 boardgame7 = Boardgame.all.sample
 meeting_jose_3 = Meeting.create!(user: jose, boardgame: boardgame7, start_date: 20220620,
   start_time: Time.new(2022, 6, 20, 14, 00, 0),
@@ -68,7 +112,6 @@ meeting_jose_3 = Meeting.create!(user: jose, boardgame: boardgame7, start_date: 
   address: "Coimbra, Universidade de Coimbra"
 )
 
-
 boardgame8 = Boardgame.all.sample
 meeting_jose_4 = Meeting.create!(user: jose, boardgame: boardgame8, start_date: 20220621,
   start_time: Time.new(2022, 6, 21, 14, 00, 0),
@@ -76,7 +119,6 @@ meeting_jose_4 = Meeting.create!(user: jose, boardgame: boardgame8, start_date: 
   name: "#{boardgame8.name}", chatroom: Chatroom.create!, players_wanted: 2,
   address: "Lisboa, Alameda da Universidade"
 )
-
 
 boardgame9 = Boardgame.all.sample
 meeting_raimundo_1 = Meeting.create!(user: raimundo, boardgame: boardgame9, start_date: 20220613,

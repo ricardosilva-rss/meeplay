@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:index, :show] do
     resources :messages, only: :create
   end
+  resources :profiles, only: [:show, :new, :create, :edit, :update]
   get 'my_meetings', to: "meetings#my_meetings"
+  get 'calendar', to: 'meetings#calendar'
 end

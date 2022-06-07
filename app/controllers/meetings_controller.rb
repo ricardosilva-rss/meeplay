@@ -1,11 +1,15 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, only: [ :index ]
+
 
   def index
     if params[:query].present?
-      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query]))
+      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query])).near(current_user.profile.city, 8000)
     else
-      @meetings = policy_scope(Meeting).sample(10)
+      nearby_meetings = policy_scope(Meeting).order(start_date: :asc).order(start_time: :asc).near(current_user.profile.city)
+      other_meetings = policy_scope(Meeting).near(current_user.profile.city, 5000) - nearby_meetings
+      @meetings = nearby_meetings + other_meetings
     end
 
     respond_to do |format|
@@ -22,6 +26,13 @@ class MeetingsController < ApplicationController
     end
 
     @user_meeting = UserMeeting.new unless @user_meeting.present?
+
+    @marker = @meeting.geocode.map do
+      {
+        lat: @meeting.latitude,
+        lng: @meeting.longitude
+      }
+    end
   end
 
   def new
@@ -58,6 +69,11 @@ class MeetingsController < ApplicationController
   end
 
   def my_meetings
+    @meetings = policy_scope(current_user.owned_meetings)
+    authorize @meetings
+  end
+
+  def calendar
     @meetings = policy_scope(current_user.meetings)
     authorize @meetings
   end
@@ -72,4 +88,5 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     authorize @meeting
   end
+
 end

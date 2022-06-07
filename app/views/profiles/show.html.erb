@@ -1,0 +1,9 @@
+<h1>Profile</h1>
+
+<p><%= @profile.name %></p>
+<%= cl_image_tag @profile.photo.key, width: 200 %>
+<p><%= @profile.date_of_birth %></p>
+<p><%= @profile.description %></p>
+<p><%= @profile.bgg_profile %></p>
+
+<%= link_to "edit", edit_profile_path(@profile), class:'a_btn' %>

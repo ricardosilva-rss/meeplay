@@ -1,6 +1,8 @@
 // External libraries
 @import "bootstrap/scss/bootstrap";
+@import "mapbox-gl/dist/mapbox-gl";
 @import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder";
+// @import "simple_calendar";
 // @import "font-awesome-sprockets";
 // @import "font-awesome";
 
@@ -27,7 +29,7 @@ h2 {
 body {
   background: linear-gradient(180deg, #F5F2F8 0%, #FFFFFF 100%);
   font-family: $body-font;
-  font-size: 12px;
+
   // min-height: 130vh;
   height: auto;
   background-repeat: no-repeat;
@@ -44,6 +46,11 @@ body a {
   }
 }
 
+<<<<<<< HEAD
 p{
   font-size: 16px;
+=======
+.empty-space {
+  padding: 30px;
+>>>>>>> master
 }

@@ -8,6 +8,7 @@ class Meeting < ApplicationRecord
   validates :user_id, presence: true
   validates :boardgame_id, presence: true
   validates :start_date, presence: true
+  validate :start_date_cannot_be_in_the_past, on: :create
   validates :players_wanted, presence: true
   validates :address, presence: true
   validates :user_is_owner, presence: true
@@ -27,8 +28,8 @@ class Meeting < ApplicationRecord
     tsearch: { prefix: true }
   }
 
-  # geocoded_by :address
-  # after_validation :geocode, if: :will_save_change_to_address?
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def meeting_cannot_have_more_players_than_game_allows
     if  self.players_wanted > self.boardgame.max_players
@@ -38,6 +39,12 @@ class Meeting < ApplicationRecord
 
   def full?
     self.players_wanted == self.users.count
+  end
+
+  def start_date_cannot_be_in_the_past
+    if self.start_date < Date.today
+      errors.add(:start_date, "can't be in the past")
+    end
   end
 
   private
