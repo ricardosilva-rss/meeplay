@@ -23,12 +23,16 @@
           <%= @boardgame.max_players %>
         <% end %> players </p>
       </div>
-      <p><%= @boardgame.designers %></p>
-      <p><%= @boardgame.artists %></p>
+
       <div class="d-flex justify-content-around">
         <p><i class="fa-solid fa-gears" style="color: #A380BD"></i> <%= @boardgame.complexity.round(1) %>/5</p>
         <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating.round(1) %>/10</p>
       </div>
+      <p class="pt-4"><span style = "color: #A380BD"> <%= @boardgame.designers.count > 1 ? "designers" : "designer" %>:</span>
+      <%= @boardgame.designers.to_sentence(last_word_connector: " and ") %>.</p>
+
+      <p><span style = "color: #A380BD"> <%= @boardgame.artists.count > 1 ? "artists" : "artist" %>:</span>
+      <%= @boardgame.artists.to_sentence(last_word_connector: " and ") %>.</p>
     </div>
     <div class="pt-3">
       <p style="color: #A380BD" class="mb-0">description:</p>
