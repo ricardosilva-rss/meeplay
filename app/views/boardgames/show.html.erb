@@ -23,6 +23,8 @@
           <%= @boardgame.max_players %>
         <% end %> players </p>
       </div>
+      <p><%= @boardgame.designers %></p>
+      <p><%= @boardgame.artists %></p>
       <div class="d-flex justify-content-around">
         <p><i class="fa-solid fa-gears" style="color: #A380BD"></i> <%= @boardgame.complexity.round(1) %>/5</p>
         <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating.round(1) %>/10</p>
