@@ -29,10 +29,9 @@ class Bgg
     # html_doc = Nokogiri::HTML(html_file)
     # max_players = document.search("maxplayers").attribute("value").text
     selected_boardgame = Boardgame.find(boardgame.id)
-    bgg_description = URI.open(document.search("description").text)
+    bgg_description = document.search("description").text
     selected_boardgame.update(description: bgg_description)
     bgg_image = URI.open(document.search("image").text)
     selected_boardgame.photo.attach(io: bgg_image, filename: "#{boardgame.name}.png", content_type: 'image/png')
-
   end
 end

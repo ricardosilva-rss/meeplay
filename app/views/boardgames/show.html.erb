@@ -28,7 +28,10 @@
        <p><i class="fa-solid fa-clipboard-list" style="color: #A380BD"></i> <%= @boardgame.complexity %>/10</p>
         <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating %>/10</p>
     </div>
-
+     <div class="text-justify pt-3">
+      <p style="color: #A380BD" class="mb-0">description:</p>
+      <p style="color: #BBBBBB; text-align: left" ><%= @boardgame.description.gsub(/&.*;/, " ") %></p>
+    </div>
     <div class="text-justify pt-3">
       <%= link_to "additional info", "https://boardgamegeek.com/boardgame/#{@boardgame.bgg_id}" %>
 
