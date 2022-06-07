@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(version: 2022_06_06_215920) do
     t.date "date_of_birth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city", default: "Lisbon"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
