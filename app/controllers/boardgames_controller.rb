@@ -15,5 +15,10 @@ class BoardgamesController < ApplicationController
   def show
     @boardgame = Boardgame.find(params[:id])
     authorize @boardgame
+
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.json { render json: @boardgame.as_json }
+    end
   end
 end
