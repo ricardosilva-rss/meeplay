@@ -1,6 +1,8 @@
 <%= simple_form_for(profile) do |f| %>
   <%= f.input :name, label: "name" %>
-  <%= f.input :date_of_birth, label: "date of bith" %>
+  <%= f.input :date_of_birth, as: :date, start_year: Date.today.year - 16,
+                              end_year: Date.today.year - 90,
+                              order: [:year, :month, :day], label: "date of birth" %>
   <%= f.input :description, label: "about me" %>
   <%= f.input :bgg_profile, label: "BGG profile" %>
   <%= f.input :photo, as: :file, label: "photo" %>
