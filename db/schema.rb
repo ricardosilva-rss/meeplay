@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_06_215920) do
+ActiveRecord::Schema.define(version: 2022_06_07_114316) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,11 +51,11 @@ ActiveRecord::Schema.define(version: 2022_06_06_215920) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "bgg_id"
-    t.string "designer"
-    t.string "artist"
     t.integer "min_time"
     t.integer "max_time"
     t.integer "min_players"
+    t.string "designers"
+    t.string "artists"
     t.text "description"
   end
 
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_215920) do
     t.date "date_of_birth"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "city"
+    t.string "city", default: "Lisbon"
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_profiles_on_user_id"
