@@ -18,44 +18,47 @@
 }
 
 .darkened-card {
-  background: linear-gradient(rgba(187, 187, 187, 0.3), rgba(187, 187, 187, 0.3));
-  img {
-    mask-image: linear-gradient(rgba(187, 187, 187, 0.3), rgba(187, 187, 187, 0.3));
-  }
-  h2 {
-    color: $meeplay-gray !important;
-  }
-  p {
-    font-size: 16px;
-    color: $meeplay-gray;
+  opacity: 0.3;
+  // background: linear-gradient(rgba(187, 187, 187, 0.3), rgba(187, 187, 187, 0.3));
+  // color: $meeplay-gray;
+  // img {
+  //   mask-image: linear-gradient(rgba(187, 187, 187, 0.3), rgba(187, 187, 187, 0.3));
+  // }
+  // h2 {
+  //   color: $meeplay-gray !important;
+  // }
+  // p {
+  //   font-size: 16px;
+  //   color: $meeplay-gray;
 
-    &:hover {
-      color: $meeplay-gray;
-    }
-  }
+  //   &:hover {
+  //     color: $meeplay-gray;
+  //   }
+  // }
 }
 
 .card-product-infos {
-<<<<<<< HEAD
   margin: 12px 12px;
-=======
-  margin-top: 1rem;
->>>>>>> master
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: black;
   p {
     margin-bottom: 0;
     font-size: 14px;
+    display: inline;
   }
 
   h2 {
     font-size: 16px;
     color: black;
     margin-top: 4px;
+    display: inline;
     &:hover {
       color: black;
     }
   }
 }
-
 
 .card-host {
   color: $light-purple;
@@ -74,4 +77,20 @@
   padding: 10px ;
   width: 100%;
 
+}
+
+.address {
+  color: $meeplay-gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline;
+}
+
+.date-and-time {
+  color: $meeplay-gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline;
 }

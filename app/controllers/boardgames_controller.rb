@@ -3,7 +3,7 @@ class BoardgamesController < ApplicationController
     if params[:query].present?
       @boardgames = policy_scope(Boardgame.search_by_name_and_max_players(params[:query]))
     else
-      @boardgames = policy_scope(Boardgame).sample(10)
+      @boardgames = policy_scope(Boardgame).order(rating: :desc)
     end
 
     respond_to do |format|
