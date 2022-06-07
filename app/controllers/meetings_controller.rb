@@ -1,5 +1,7 @@
 class MeetingsController < ApplicationController
-  before_action :set_meeting, only: [ :show, :edit, :update, :destroy, ]
+  before_action :set_meeting, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, only: [ :index ]
+
 
   def index
     if params[:query].present?
