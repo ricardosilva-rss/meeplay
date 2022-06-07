@@ -1,39 +1,37 @@
 <div class="px-4">
-  <h1 class="pb-3"><%=@boardgame.name %></h1>
+  <h1 class=""><%=@boardgame.name %></h1>
   <div class="px-4">
     <p><span style="color: #A380BD"></p>
-
-    <div class="d-flex justify-content-start">
-      <p><%= link_to(boardgame_path(@boardgame)) do %></p>
-
-
-    </div>
+    <p><%= link_to(boardgame_path(@boardgame)) do %></p>
     <div class="text-center pb-4">
       <%= cl_image_tag @boardgame.photo.key, width: '75%', class: 'game-photo my-4'%>
     </div>
     <% end %>
-    <div class="d-colum justify-content-between px-3">
-      <p><i class="fa-solid fa-clock" style="color: #A380BD"></i>
-      <% if @boardgame.min_time != @boardgame.max_time %>
-        <%= @boardgame.min_time %> - <%= @boardgame.max_time %>
-      <% else %>
-        <%= @boardgame.min_time %>
-      <% end %> min </p>
-      <p><i class="fa-solid fa-users" style="color: #A380BD"></i>
-      <% if @boardgame.min_players != @boardgame.max_players %>
-        <%= @boardgame.min_players %> - <%= @boardgame.max_players %>
-      <% else %>
-        <%= @boardgame.max_players %>
-      <% end %> players </p>
-       <p><i class="fa-solid fa-clipboard-list" style="color: #A380BD"></i> <%= @boardgame.complexity %>/10</p>
-        <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating %>/10</p>
+
+    <div class="d-colum justify-content-between">
+      <div class="d-flex justify-content-around">
+        <p><i class="fa-solid fa-clock" style="color: #A380BD"></i>
+        <% if @boardgame.min_time != @boardgame.max_time %>
+          <%= @boardgame.min_time %> - <%= @boardgame.max_time %>
+        <% else %>
+          <%= @boardgame.min_time %>
+        <% end %> min </p>
+        <p><i class="fa-solid fa-users" style="color: #A380BD"></i>
+        <% if @boardgame.min_players != @boardgame.max_players %>
+          <%= @boardgame.min_players %> - <%= @boardgame.max_players %>
+        <% else %>
+          <%= @boardgame.max_players %>
+        <% end %> players </p>
+      </div>
+      <div class="d-flex justify-content-around">
+        <p><i class="fa-solid fa-gears" style="color: #A380BD"></i> <%= @boardgame.complexity.round(1) %>/5</p>
+        <p><i class="fa-solid fa-star" style="color: #A380BD"></i> <%= @boardgame.rating.round(1) %>/10</p>
+      </div>
     </div>
-     <div class="text-justify pt-3">
+    <div class="pt-3">
       <p style="color: #A380BD" class="mb-0">description:</p>
       <p style="color: #BBBBBB; text-align: left" ><%= @boardgame.description.gsub(/&.*;/, " ") %></p>
     </div>
-    <div class="text-justify pt-3">
+    <div class="text-end">
       <%= link_to "additional info", "https://boardgamegeek.com/boardgame/#{@boardgame.bgg_id}" %>
-
-
     </div>
