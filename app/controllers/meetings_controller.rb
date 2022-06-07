@@ -3,7 +3,7 @@ class MeetingsController < ApplicationController
 
   def index
     if params[:query].present?
-      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query])).sort_by { |meeting| meeting.distance_to(current_user.profile.city) }
+      @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query])).near(current_user.profile.city, 8000)
     else
       nearby_meetings = policy_scope(Meeting).order(start_date: :asc).order(start_time: :asc).near(current_user.profile.city)
       other_meetings = policy_scope(Meeting).near(current_user.profile.city, 5000) - nearby_meetings
