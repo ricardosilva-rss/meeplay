@@ -1,5 +1,6 @@
 <div class="px-4">
   <h1>my boardgames</h1>
+  <%= link_to "add", new_user_boardgame_path, class:"a_btn" %>
   <% @user_boardgames.each do |user_boardgame| %>
     <%= link_to boardgame_path(user_boardgame.boardgame) do %>
       <div class="card-product">
@@ -26,6 +27,7 @@
                   <% end %> min </p>
                 <p style="color: #BBBBBB"><i class="fa-solid fa-gears"></i> <%= user_boardgame.boardgame.complexity.round(1) %>/5</p>
               </div>
+              <%= link_to "remove", user_boardgame_path(user_boardgame), method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
           </div>
         </div>
