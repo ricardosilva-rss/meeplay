@@ -1,7 +1,10 @@
-<div id="message-<%= message.id %>" class="<% if message.user == current_user %> text-end sent-message <% else %> text-start received-message <% end %>">
-  <small>
-    <strong><%= message.user.email %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
-</div>
+<% if message.user == current_user %>
+  <div id="message-<%= message.id %>" class="text-end sent-message">
+    <p><%= message.content %><i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i></p>
+  </div>
+<% else %>
+    <%= cl_image_tag message.user.profile.photo.key, width: 50, class:'avatar' %>
+    <div id="message-<%= message.id %>" class="text-start received-message">
+      <p><%= message.content %><i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i></p>
+    </div>
+<% end %>

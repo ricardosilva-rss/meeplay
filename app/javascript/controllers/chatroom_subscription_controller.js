@@ -20,9 +20,14 @@ export default class extends Controller {
     this.channel.unsubscribe()
   }
 
-
   #insertMessageAndScrollDown(data) {
+    //debugger;
+    //this.inputTarget.value;
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    //window.location.reload();
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+
+    //this.messagesTarget.lastChild.previousElementSibling.classList.remove("sent-message");
+    //this.messagesTarget.lastChild.previousElementSibling.classList.add("received-message");
   }
 }
