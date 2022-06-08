@@ -17,7 +17,7 @@
     <% end %>
 
     <div class="text-center px-3">
-      <p><i class="fa fa-solid fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date.strftime('%A, %d %B %Y') %>, <%= @meeting.start_time.strftime("%k:%M")%></p>
+      <p><i class="fa fa-solid fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date.strftime('%A, %d %B %Y') %>, <%= @meeting.start_time.strftime("%H:%M")%></p>
       <p><i class="fa fa-solid fa-location-dot" style="color: #A380BD"></i> <%= @meeting.address %></p>
     </div>
     <div class="text-center">

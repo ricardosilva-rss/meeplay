@@ -11,7 +11,7 @@
                 <h2><%= meeting.boardgame.name %></h2>
                 <div class="d-flex justify-content-between">
                   <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= h truncate(meeting.address, :length => 10) %></p>
-                  <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b %Y') %> <%= meeting.start_time.strftime("%k:%M")%></p>
+                  <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b %Y') %> <%= meeting.start_time.strftime("%H:%M")%></p>
                 </div>
             </div>
           </div>
