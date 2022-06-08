@@ -36,6 +36,8 @@ class MeetingsController < ApplicationController
   end
 
   def new
+    @boardgame = Boardgame.find(params[:boardgame_id]) if params[:boardgame_id]
+
     @meeting = Meeting.new
     authorize @meeting
   end
