@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_07_150505) do
+ActiveRecord::Schema.define(version: 2022_06_08_113953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2022_06_07_150505) do
     t.time "start_time"
     t.float "latitude"
     t.float "longitude"
+    t.integer "players_total", default: 0, null: false
     t.index ["boardgame_id"], name: "index_meetings_on_boardgame_id"
     t.index ["chatroom_id"], name: "index_meetings_on_chatroom_id"
     t.index ["user_id"], name: "index_meetings_on_user_id"

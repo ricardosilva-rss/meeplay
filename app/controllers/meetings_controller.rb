@@ -55,9 +55,9 @@ class MeetingsController < ApplicationController
     authorize @meeting
 
     if @meeting.save!
-      redirect_to meeting_path(@meeting), notice: 'meeting was successfully scheduled.'
+      redirect_to meeting_path(@meeting), notice: 'meeting was successfully scheduled.' and return
     else
-      render :new
+      render :new, notice: 'you already have a meeting at that time'
     end
   end
 
