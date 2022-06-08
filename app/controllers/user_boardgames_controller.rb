@@ -1,4 +1,9 @@
 class UserBoardgamesController < ApplicationController
+
+  def index
+    @user_boardgames = policy_scope(UserBoardgame)
+  end
+  
   def new
     @user_boardgame = UserBoardgame.new
     authorize @user_boardgame
