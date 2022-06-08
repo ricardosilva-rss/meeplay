@@ -1,5 +1,5 @@
 .card-product{
-  height: 120px;
+  min-height: 150px;
   width: 100%;
   margin: 20px 0;
   display: flex;
@@ -11,7 +11,7 @@
 
   img {
     border-radius: 5px 0 0 5px;
-    min-width: 96px;
+    min-width: 105px;
     object-fit: cover;
     object-position: top;
     }

@@ -1,7 +1,7 @@
 <div data-search-boardgames-target="list">
   <% boardgames.each do |boardgame| %>
       <%= link_to boardgame_path(boardgame) do %>
-        <div class="card-product" style="min-height: 120px;">
+        <div class="card-product">
           <%= cl_image_tag boardgame.photo.key, width: 96 %>
           <div class="card-product-infos d-flex flex-column justify-content-between w-100">
             <h2><%= boardgame.name %></h2>
