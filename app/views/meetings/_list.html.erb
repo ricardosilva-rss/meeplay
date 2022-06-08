@@ -7,7 +7,7 @@
           <div class="card-host">
             <% if meeting.full? %>
               <%= render 'shared/small_gray_meeple' %>
-              <p style="color: #BBBBBB"><%= meeting.user.profile.name%></p>
+              <p style="color: #6e6d6d"><%= meeting.user.profile.name%></p>
             <% else %>
               <%= render 'shared/small_meeple' %>
               <p style="color: #A380BD"><%= meeting.user.profile.name%></p>
@@ -16,10 +16,10 @@
           <h2><%= meeting.name %></h2>
           <div class="d-flex justify-content-between">
             <div class="address">
-              <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
+              <p><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
             </div>
             <div class="date-and-time">
-              <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
+              <p><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
             </div>
           </div>
       </div>
