@@ -34,6 +34,7 @@
       <p><span style = "color: #A380BD"> <%= @boardgame.artists.count > 1 ? "artists" : "artist" %>:</span>
       <%= @boardgame.artists.to_sentence(last_word_connector: " and ") %>.</p>
     </div>
+
     <div class="pt-3">
       <p style="color: #A380BD" class="mb-0">description:</p>
       <p style="color: #BBBBBB; text-align: left" ><%= @boardgame.description.gsub(/&.*;/, " ") %></p>
@@ -41,3 +42,7 @@
     <div class="text-end">
       <%= link_to "additional info", "https://boardgamegeek.com/boardgame/#{@boardgame.bgg_id}" %>
     </div>
+
+<div class="container-redirect d-flex justify-content-center mt-3">
+  <%= link_to "create meeting", new_meeting_path(boardgame_id: params[:id]), class: "a_btn" %>
+</div>

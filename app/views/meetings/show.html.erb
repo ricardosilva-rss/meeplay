@@ -1,7 +1,7 @@
 <div class="px-4">
   <h1 class="pb-3"><%=@meeting.name %></h1>
   <div class="px-4">
-    <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.email %></p>
+    <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.profile.name %></p>
 
     <div class="d-flex justify-content-start">
       <p><%= link_to(boardgame_path(@meeting.boardgame)) do %><%= @meeting.boardgame.name %></p>
@@ -17,7 +17,7 @@
     <% end %>
 
     <div class="text-center px-3">
-      <p><i class="fa fa-solid fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date.strftime('%A, %d %B %Y') %>, <%= @meeting.start_time.strftime("%k:%M")%></p>
+      <p><i class="fa fa-solid fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date.strftime('%A, %d %B %Y') %>, <%= @meeting.start_time.strftime("%H:%M")%></p>
       <p><i class="fa fa-solid fa-location-dot" style="color: #A380BD"></i> <%= @meeting.address %></p>
     </div>
     <div class="text-center">

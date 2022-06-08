@@ -44,12 +44,10 @@
   color: black;
   p {
     margin-bottom: 0;
-    font-size: 14px;
     display: inline;
   }
 
   h2 {
-    font-size: 16px;
     color: black;
     margin-top: 4px;
     overflow: hidden;
@@ -63,15 +61,16 @@
 
 .card-host {
   color: $light-purple;
-
   &:hover {
     color: $light-purple;
   }
 }
+
 // .card-info-footer {
 //   position: absolute;
 
 // }
+
 .boardgame-padding{
   padding: 10px ;
   width: 100%;

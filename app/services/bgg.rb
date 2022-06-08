@@ -10,8 +10,8 @@ class Bgg
   end
 
   def call
-    persons = read_persons_csv
-    puts "Loaded Persons csv..."
+    people = read_people_csv
+    puts "Loaded Person csv..."
 
     CSV.foreach(@filepath, headers: :first_row, header_converters: :symbol) do |row|
       designer_arr = row[:designer].nil? ? [""] : row[:designer].split(",")
@@ -28,15 +28,15 @@ class Bgg
     p "Finished getting info from BGG"
 
     puts "Getting name of designers / artists..."
-    update_designers_and_artists(persons)
+    update_designers_and_artists(people)
     puts "All done!"
   end
 
-  def update_designers_and_artists(persons)
+  def update_designers_and_artists(people)
     Boardgame.all.each do |boardgame|
       designers = []
       boardgame.designers.each do |designer|
-        person = persons.find { |elm| elm[:id] == designer.to_i }
+        person = people.find { |elm| elm[:id] == designer.to_i }
         if person
           designers << person[:name]
         end
@@ -45,7 +45,7 @@ class Bgg
 
       artists = []
       boardgame.artists.each do |artist|
-        person = persons.find { |elm| elm[:id] == artist.to_i }
+        person = people.find { |elm| elm[:id] == artist.to_i }
         if person
           artists << person[:name]
         end
@@ -70,11 +70,11 @@ class Bgg
     selected_boardgame.update(description: bgg_description)
   end
 
-  def read_persons_csv
-    persons = []
+  def read_people_csv
+    people = []
     CSV.foreach(@person_filepath, headers: :first_row, header_converters: :symbol) do |row|
-      persons << { id: row[:bgg_id].to_i, name: row[:name] }
+      people << { id: row[:bgg_id].to_i, name: row[:name] }
     end
-    persons
+    people
   end
 end
