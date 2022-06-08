@@ -17,13 +17,17 @@
 
 h1 {
   font-family: $headers-font;
-  font-size: 24px;
+  font-size: $font-size-base * 2.5;
   color: $dark-purple;
 }
 
 h2 {
   font-family: $headers-font;
-  font-size: 16px;
+  font-size: $font-size-base * 1.50;
+}
+
+p{
+  font-size: $font-size-base * 1.2;
 }
 
 body {
@@ -44,8 +48,4 @@ body a {
     text-decoration: none;
     color: $light-purple;
   }
-}
-
-p{
-  font-size: 16px;
 }

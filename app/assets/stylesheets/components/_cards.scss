@@ -40,19 +40,18 @@
 .card-product-infos {
   margin: 12px 12px;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   color: black;
   p {
     margin-bottom: 0;
-    font-size: 14px;
     display: inline;
   }
 
   h2 {
-    font-size: 16px;
     color: black;
     margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
     display: inline;
     &:hover {
       color: black;
@@ -62,35 +61,41 @@
 
 .card-host {
   color: $light-purple;
-
-
-
   &:hover {
     color: $light-purple;
   }
 }
+
 // .card-info-footer {
 //   position: absolute;
 
 // }
+
 .boardgame-padding{
   padding: 10px ;
   width: 100%;
+}
 
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
+.meeting-title {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline;
 }
 
 .address {
-  color: $meeplay-gray;
+  color: $dark-gray;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   display: inline;
 }
 
 .date-and-time {
-  color: $meeplay-gray;
+  color: $dark-gray;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   display: inline;
 }

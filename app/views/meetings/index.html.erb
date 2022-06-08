@@ -18,9 +18,10 @@
     <% end %>
     <%# <%= submit_tag "Search", class: "" %>
   </div>
+
   <%= link_to(@meetings_path) do %>
     <h1>meetings</h1>
-
   <% end %>
+
   <%= render 'list', meetings: @meetings %>
 </div>

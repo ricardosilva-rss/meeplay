@@ -3,7 +3,7 @@ class UserBoardgamesController < ApplicationController
   def index
     @user_boardgames = policy_scope(UserBoardgame)
   end
-  
+
   def new
     @user_boardgame = UserBoardgame.new
     authorize @user_boardgame
@@ -14,10 +14,17 @@ class UserBoardgamesController < ApplicationController
     @user_boardgame.user = current_user
     authorize @user_boardgame
     if @user_boardgame.save!
-      redirect_to meetings_path, notice: 'boardgame added to collection.'
+      redirect_to user_boardgames_path, notice: "#{@user_boardgame.boardgame.name} added to collection."
     else
       render :new
     end
+  end
+
+  def destroy
+    @user_boardgame = UserBoardgame.find(params[:id])
+    @user_boardgame.destroy
+    authorize @user_boardgame
+    redirect_to user_boardgames_path, notice: "#{@user_boardgame.boardgame.name} removed from collection."
   end
 
   private
