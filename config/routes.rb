@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show, :new, :create, :edit, :update]
   get 'my_meetings', to: "meetings#my_meetings"
   get 'calendar', to: 'meetings#calendar'
-  resources :user_boardgames, only: [:index]
+  resources :user_boardgames, only: [:new, :create, :index]
 end
