@@ -1,7 +1,7 @@
 <div class="px-4">
   <h1 class="pb-3"><%=@meeting.name %></h1>
   <div class="px-4">
-    <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.email %></p>
+    <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.profile.name %></p>
 
     <div class="d-flex justify-content-start">
       <p><%= link_to(boardgame_path(@meeting.boardgame)) do %><%= @meeting.boardgame.name %></p>
