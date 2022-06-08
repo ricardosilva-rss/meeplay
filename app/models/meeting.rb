@@ -14,6 +14,7 @@ class Meeting < ApplicationRecord
   validates :user_is_owner, presence: true
   validates :name, presence: true
   validate :meeting_cannot_have_more_players_than_game_allows, on: :create
+  validate :cannot_create_meeting_if_busy_at_that_time, on: :create
 
   after_create :create_user_meeting
 
@@ -31,6 +32,8 @@ class Meeting < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+  scope :not_full, -> { where('players_total < players_wanted') }
+
   def meeting_cannot_have_more_players_than_game_allows
     if  self.players_wanted > self.boardgame.max_players
       errors.add(:players_wanted, "can't have more players than the game allows")
@@ -44,6 +47,16 @@ class Meeting < ApplicationRecord
   def start_date_cannot_be_in_the_past
     if self.start_date < Date.today
       errors.add(:start_date, "can't be in the past")
+    end
+  end
+
+  def cannot_create_meeting_if_busy_at_that_time
+    user_meetings = user.meetings.where(start_date: start_date, start_time: start_time)
+    if user_meetings.any?
+      record.errors.add(
+        :meeting,
+        "You already have a meeting at that time"
+      )
     end
   end
 

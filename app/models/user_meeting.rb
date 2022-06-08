@@ -1,6 +1,6 @@
 class UserMeeting < ApplicationRecord
   belongs_to :user
-  belongs_to :meeting
+  belongs_to :meeting, counter_cache: :players_total
 
   validates :user, uniqueness: { scope: :meeting, message: "You can't be in the same meeting twice" }
 
