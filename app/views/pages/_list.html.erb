@@ -12,10 +12,10 @@
             <h2><%= meeting.name %></h2>
             <div class="d-flex justify-content-between">
               <div class="address">
-                <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
+                <p><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
               </div>
               <div class="date-and-time">
-                <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
+                <p><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
               </div>
             </div>
           </div>
