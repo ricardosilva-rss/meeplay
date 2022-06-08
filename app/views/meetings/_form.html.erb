@@ -1,7 +1,7 @@
 <%= simple_form_for(meeting) do |f| %>
   <%= f.input :name, label: "name"  %>
   <div data-controller='min-max-players'>
-    <%= f.association :boardgame, label: "boardgame", input_html: { data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} }, include_blank: false, include_hidden: false %>
+    <%= f.association :boardgame, label: "boardgame", input_html: { data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} } %>
 
     <div data-controller='flatpickr'>
       <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr'} %>
