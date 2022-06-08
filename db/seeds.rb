@@ -3,6 +3,7 @@ require "open-uri"
 UserMeeting.destroy_all
 Meeting.destroy_all
 Chatroom.destroy_all
+UserBoardgame.destroy_all
 User.destroy_all
 Boardgame.destroy_all
 
@@ -19,18 +20,17 @@ guy_profile = Profile.create!(
                 name: "Guy Gan Baruch",
                 description: "I'm an IT admin want to make a change in the world on the environmental sector. and I like cats and remote controlled helicopters.",
                 date_of_birth: Date.new(1996, 1, 1),
-                city: "Lisbon"
+                city: "Lisbon, Portugal"
               )
 file1 = URI.open('https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1652775726/ctcrjpqfgbxallgn9xqr.jpg')
 guy_profile.photo.attach(io: file1, filename: 'guy.jpg', content_type: 'image/jpg')
-
 
 jose_profile = Profile.create!(
                 user: jose,
                 name: "José de Melo",
                 description: "i did social studies at universidade catolica",
                 date_of_birth: Date.new(1998, 1, 1),
-                city: "Lisbon"
+                city: "Lisbon, Portugal"
 )
 file2 = URI.open('https://avatars.githubusercontent.com/u/99876826?v=4')
 jose_profile.photo.attach(io: file2, filename: 'jose.jpg', content_type: 'image/png')
@@ -40,167 +40,221 @@ raimundo_profile = Profile.create!(
                 name: "Raimundo Henriques",
                 description: "I've been studying philosophy and literary theory for the past years and want to look for other opportunities and to develop my passion for technology.",
                 date_of_birth: Date.new(1991, 1, 17),
-                city: "Lisbon"
+                city: "Lisbon, Portugal"
 )
 file3 = URI.open('https://avatars.githubusercontent.com/u/100690574?v=4')
 raimundo_profile.photo.attach(io: file3, filename: 'raimundo.jpg', content_type: 'image/jpg')
-
 
 ricardo_profile = Profile.create!(
                 user: ricardo,
                 name: "Ricardo Silva",
                 description: "After years of doing administrative work and some acting, I am now looking for a change. Always liked computers and videogames, so coding just felt right...",
                 date_of_birth: Date.new(1991, 1, 1),
-                city: "Lisbon"
+                city: "Lisbon, Portugal"
 )
 file4 = URI.open('https://avatars.githubusercontent.com/u/97455167?v=4')
 ricardo_profile.photo.attach(io: file4, filename: 'ricardo.jpg', content_type: 'image/jpg')
 
-
-boardgame1 = Boardgame.all.sample
-meeting_guy_1 = Meeting.create!(user: guy, boardgame: boardgame1, start_date:20220610,
+boardgame = Boardgame.all.sample
+meeting_guy_1 = Meeting.create!(user: guy,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 10),
   start_time: Time.new(2022, 6, 10, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "let's play #{boardgame1.name}", chatroom: Chatroom.create!, players_wanted: 3,
+  description: "No smoking, please.",
+  name: "let's play #{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Rua do Conde Redondo"
 )
 
-boardgame2 = Boardgame.all.sample
-meeting_guy_2 = Meeting.create!(user: guy, boardgame: boardgame2, start_date: 20220611,
+boardgame = Boardgame.all.sample
+meeting_guy_2 = Meeting.create!(user: guy,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 11),
   start_time: Time.new(2022, 6, 11, 18, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame2.name} night", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "I have cats, hope you're not allergic!",
+  name: "#{boardgame.name} night",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Porto, Avenida dos Aliados"
 )
 
-boardgame3 = Boardgame.all.sample
-meeting_guy_3 = Meeting.create!(user: guy, boardgame: boardgame3, start_date: 20220616,
+boardgame = Boardgame.all.sample
+meeting_guy_3 = Meeting.create!(user: guy,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 16),
   start_time: Time.new(2022, 6, 16, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame3.name}", chatroom: Chatroom.create!, players_wanted: 3,
+  description: "No cellphones allowed!",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Évora, Praça do Giraldo"
 )
-boardgame4 = Boardgame.all.sample
-meeting_guy_4 = Meeting.create!(user: guy, boardgame: boardgame4, start_date: 20220619,
+
+boardgame = Boardgame.all.sample
+meeting_guy_4 = Meeting.create!(user: guy,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 19),
   start_time: Time.new(2022, 6, 19, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame4.name}", chatroom: Chatroom.create!, players_wanted: 3,
+  description: "Bring snacks, but please be careful with the game.",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Portimão, Infante D. Henrique"
 )
 
-boardgame5 = Boardgame.all.sample
-meeting_jose_1 = Meeting.create!(user: jose, boardgame: boardgame5, start_date: 20220610,
+boardgame = Boardgame.all.sample
+meeting_jose_1 = Meeting.create!(user: jose,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 10),
   start_time: Time.new(2022, 6, 10, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "Afternoon of #{boardgame5.name}", chatroom: Chatroom.create!, players_wanted: 3,
+  description: "I have beer!",
+  name: "Afternoon of #{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Rua do Conde Redondo"
 )
 
-boardgame6 = Boardgame.all.sample
-meeting_jose_2 = Meeting.create!(user: jose, boardgame: boardgame6, start_date: 20220612,
+boardgame = Boardgame.all.sample
+meeting_jose_2 = Meeting.create!(user: jose,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 12),
   start_time: Time.new(2022, 6, 12, 20, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "Evening of #{boardgame6.name}", chatroom: Chatroom.create!, players_wanted: 3,
+  description: "Make sure my dog doesn't note you're afraid of it. Everything will be alright!",
+  name: "Evening of #{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Porto, Rua Passos Manuel"
 )
 
-boardgame7 = Boardgame.all.sample
-meeting_jose_3 = Meeting.create!(user: jose, boardgame: boardgame7, start_date: 20220620,
+boardgame = Boardgame.all.sample
+meeting_jose_3 = Meeting.create!(user: jose,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 20),
   start_time: Time.new(2022, 6, 20, 14, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame7.name}", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "Bring snacks, please!",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Coimbra, Universidade de Coimbra"
 )
 
-boardgame8 = Boardgame.all.sample
-meeting_jose_4 = Meeting.create!(user: jose, boardgame: boardgame8, start_date: 20220621,
+boardgame = Boardgame.all.sample
+meeting_jose_4 = Meeting.create!(user: jose,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 21),
   start_time: Time.new(2022, 6, 21, 14, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame8.name}", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "Bring positive vibes and beers, please.",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Alameda da Universidade"
 )
 
-boardgame9 = Boardgame.all.sample
-meeting_raimundo_1 = Meeting.create!(user: raimundo, boardgame: boardgame9, start_date: 20220613,
+boardgame = Boardgame.all.sample
+meeting_raimundo_1 = Meeting.create!(user: raimundo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 13),
   start_time: Time.new(2022, 6, 13, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "Join me at #{boardgame9.name}", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "The cat doesn't bite. Unless you try to grab it.",
+  name: "Join me at #{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Rua do Conde Redondo"
 )
 
-boardgame10 = Boardgame.all.sample
-meeting_raimundo_2 = Meeting.create!(user: raimundo, boardgame: boardgame10, start_date: 20220614,
+boardgame = Boardgame.all.sample
+meeting_raimundo_2 = Meeting.create!(user: raimundo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 14),
   start_time: Time.new(2022, 6, 14, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame10.name}", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "No smoking, please.",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Avenida 5 de Outubro"
 )
 
-boardgame11 = Boardgame.all.sample
-meeting_raimundo_3 = Meeting.create!(user: raimundo, boardgame: boardgame11, start_date: 20220621,
+boardgame = Boardgame.all.sample
+meeting_raimundo_3 = Meeting.create!(user: raimundo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 21),
   start_time: Time.new(2022, 6, 21, 14, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame11.name}", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "No smoking, please!",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Rua do Conde Redondo"
 )
 
-boardgame12 = Boardgame.all.sample
-meeting_raimundo_4 = Meeting.create!(user: raimundo, boardgame: boardgame12, start_date: 20220623,
+boardgame = Boardgame.all.sample
+meeting_raimundo_4 = Meeting.create!(user: raimundo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 23),
   start_time: Time.new(2022, 6, 23, 18, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame12.name}", chatroom: Chatroom.create!, players_wanted: 3,
+  description: "I have beers!",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Porto, Rua das Flores"
 )
 
-boardgame13 = Boardgame.all.sample
-meeting_ricardo_1 = Meeting.create!(user: ricardo, boardgame: boardgame13, start_date: 20220614,
+boardgame = Boardgame.all.sample
+meeting_ricardo_1 = Meeting.create!(user: ricardo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 14),
   start_time: Time.new(2022, 6, 14, 20, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame13.name} night", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "No cellphones, please!",
+  name: "#{boardgame.name} night",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Porto, Avenida da Boavista"
 )
 
-boardgame14 = Boardgame.all.sample
-meeting_ricardo_2 = Meeting.create!(user: ricardo, boardgame: boardgame14, start_date: 20220621,
+boardgame = Boardgame.all.sample
+meeting_ricardo_2 = Meeting.create!(user: ricardo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 21),
   start_time: Time.new(2022, 6, 21, 14, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame14.name} evening", chatroom: Chatroom.create!,
-  address: "Berlin, Kudamm",
-  players_wanted: rand(boardgame14.min_players..boardgame14.max_players)
+  description: "No smoking allowed in the house.",
+  name: "#{boardgame.name} evening",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
+  address: "Berlin, Kudamm"
 )
 
-boardgame15 = Boardgame.all.sample
-meeting_ricardo_3 = Meeting.create!(user: ricardo, boardgame: boardgame15, start_date: 20220625,
+boardgame = Boardgame.all.sample
+meeting_ricardo_3 = Meeting.create!(user: ricardo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 6, 25),
   start_time: Time.new(2022, 6, 25, 18, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame15.name} evening", chatroom: Chatroom.create!, players_wanted: 4,
+  description: "Bring good vibes and beers!",
+  name: "#{boardgame.name} evening",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Rua do Conde Redondo"
 )
 
-boardgame16 = Boardgame.all.sample
-meeting_ricardo_4 = Meeting.create!(user: ricardo, boardgame: boardgame16, start_date: 20220701,
+boardgame = Boardgame.all.sample
+meeting_ricardo_4 = Meeting.create!(user: ricardo,
+  boardgame: boardgame,
+  start_date: Date.new(2022, 7, 1),
   start_time: Time.new(2022, 7, 1, 16, 00, 0),
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame16.name}", chatroom: Chatroom.create!, players_wanted: 2,
+  description: "No snacks allowed at the table.",
+  name: "#{boardgame.name}",
+  chatroom: Chatroom.create!,
+  players_wanted: rand(boardgame.min_players..boardgame.max_players),
   address: "Lisboa, Rossio"
 )
 
-UserMeeting.create!(user: guy, meeting: meeting_jose_2)
-UserMeeting.create!(user: guy, meeting: meeting_raimundo_3)
-UserMeeting.create!(user: guy, meeting: meeting_ricardo_3)
-UserMeeting.create!(user: guy, meeting: meeting_ricardo_4)
+User.all.find_each do |user|
+  4.times do
+    user_times = user.meetings.pluck(:start_time)
 
-UserMeeting.create!(user: jose, meeting: meeting_guy_3)
-UserMeeting.create!(user: jose, meeting: meeting_guy_2)
-UserMeeting.create!(user: jose, meeting: meeting_raimundo_4)
-UserMeeting.create!(user: jose, meeting: meeting_ricardo_3)
+    available_meetings = Meeting.not_full.where.not(start_time: user_times)
 
-UserMeeting.create!(user: raimundo, meeting: meeting_guy_4)
-UserMeeting.create!(user: raimundo, meeting: meeting_jose_1)
-UserMeeting.create!(user: raimundo, meeting: meeting_jose_2)
-UserMeeting.create!(user: raimundo, meeting: meeting_ricardo_3)
+    next if available_meetings.empty?
 
-UserMeeting.create!(user: ricardo, meeting: meeting_guy_1)
-UserMeeting.create!(user: ricardo, meeting: meeting_jose_3)
-UserMeeting.create!(user: ricardo, meeting: meeting_raimundo_1)
-UserMeeting.create!(user: ricardo, meeting: meeting_raimundo_2)
+    UserMeeting.create!(user: user, meeting: available_meetings.sample)
+  end
+end
