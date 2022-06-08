@@ -3,9 +3,30 @@
   <% @user_boardgames.each do |user_boardgame| %>
     <%= link_to boardgame_path(user_boardgame.boardgame) do %>
       <div class="card-product">
+        <%= cl_image_tag user_boardgame.boardgame.photo.key, width: 96 %>
         <div class="card-product-infos" >
           <div class="d-flex justify-content-between align-items-center">
             <h2><%= user_boardgame.boardgame.name %></h2>
+            <div class="boardgame-padding">
+              <div class="d-flex justify-content-between">
+                <p style="color: #BBBBBB"><i class="fa-solid fa-users"></i>
+                  <% if user_boardgame.boardgame.min_players != user_boardgame.boardgame.max_players %>
+                    <%= user_boardgame.boardgame.min_players %> - <%= user_boardgame.boardgame.max_players %>
+                  <% else %>
+                    <%= user_boardgame.boardgame.max_players %>
+                  <% end %> players </p>
+                <p style="color: #BBBBBB"><i class="fa-solid fa-star"></i> <%= user_boardgame.boardgame.rating.round(1) %>/10</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <p style="color: #BBBBBB"><i class="fa-solid fa-clock"></i>
+                  <% if user_boardgame.boardgame.min_time != user_boardgame.boardgame.max_time %>
+                    <%= user_boardgame.boardgame.min_time %> - <%= user_boardgame.boardgame.max_time %>
+                  <% else %>
+                    <%= user_boardgame.boardgame.min_time %>
+                  <% end %> min </p>
+                <p style="color: #BBBBBB"><i class="fa-solid fa-gears"></i> <%= user_boardgame.boardgame.complexity.round(1) %>/5</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
