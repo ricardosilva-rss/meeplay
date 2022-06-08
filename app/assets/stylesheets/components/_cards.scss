@@ -40,7 +40,6 @@
 .card-product-infos {
   margin: 12px 12px;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   color: black;
   p {
@@ -51,6 +50,8 @@
   h2 {
     color: black;
     margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
     display: inline;
     &:hover {
       color: black;
@@ -75,10 +76,19 @@
   width: 100%;
 }
 
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
+.meeting-title {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline;
+}
+
 .address {
   color: $dark-gray;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   display: inline;
 }
@@ -86,7 +96,6 @@
 .date-and-time {
   color: $dark-gray;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   display: inline;
 }

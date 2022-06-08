@@ -7,7 +7,7 @@
             <%= cl_image_tag meeting.boardgame.photo.key, width: 96 %>
             <div class="card-product-infos">
               <div style="width: 215px"></div>
-                <p class="card-host"><%= render 'shared/small_meeple'%> <span style="padding: 3px"><%= h truncate(meeting.user.email, :length => 50) %></span></p>
+                <p class="card-host"><%= render 'shared/small_meeple'%> <span style="padding: 3px"><%= h truncate(meeting.user.profile.name, :length => 50) %></span></p>
                 <h2><%= meeting.boardgame.name %></h2>
                 <div class="d-flex justify-content-between">
                   <p style="color: #6e6d6d"><i class="fa-solid fa-location-dot"></i> <%= h truncate(meeting.address, :length => 10) %></p>
