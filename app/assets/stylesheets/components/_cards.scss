@@ -40,7 +40,6 @@
 .card-product-infos {
   margin: 12px 12px;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   color: black;
   p {
@@ -53,6 +52,8 @@
     font-size: 16px;
     color: black;
     margin-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
     display: inline;
     &:hover {
       color: black;
@@ -62,8 +63,6 @@
 
 .card-host {
   color: $light-purple;
-
-
 
   &:hover {
     color: $light-purple;
@@ -76,13 +75,21 @@
 .boardgame-padding{
   padding: 10px ;
   width: 100%;
+}
 
+.ellipsis {
+  text-overflow: ellipsis;
+}
+
+.meeting-title {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline;
 }
 
 .address {
   color: $meeplay-gray;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   display: inline;
 }
@@ -90,7 +97,6 @@
 .date-and-time {
   color: $meeplay-gray;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
   display: inline;
 }

@@ -3,7 +3,7 @@
       <%= link_to meeting_path(meeting) do %>
         <div class="card-product <%= "darkened-card" if meeting.full? %>"  style="min-height: 120px;">
           <%= cl_image_tag meeting.boardgame.photo.key, width: 96 %>
-          <div class="card-product-infos d-flex flex-column justify-content-between w-100">
+          <div class="card-product-infos d-flex flex-column justify-content-between w-100 ellipsis">
               <div class="card-host">
                 <% if meeting.full? %>
                   <%= render 'shared/small_gray_meeple' %>
@@ -13,12 +13,14 @@
                   <p style="color: #A380BD"><%= meeting.user.profile.name%></p>
                 <% end %>
               </div>
-              <h2><%= meeting.name %></h2>
+              <div class="meeting-title ellipsis">
+                <h2><%= meeting.name %></h2>
+              </div>
               <div class="d-flex justify-content-between">
-                <div class="address">
+                <div class="address ellipsis">
                   <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
                 </div>
-                <div class="date-and-time">
+                <div class="date-and-time ellipsis">
                   <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
                 </div>
               </div>
