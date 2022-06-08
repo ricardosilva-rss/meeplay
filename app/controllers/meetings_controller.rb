@@ -4,6 +4,12 @@ class MeetingsController < ApplicationController
 
 
   def index
+    if current_user.blank?
+      redirect_to root_path
+      skip_policy_scope
+      return
+    end
+
     if params[:query].present?
       @meetings = policy_scope(Meeting.search_by_name_and_address_and_host(params[:query])).near(current_user.profile.city, 8000)
     else

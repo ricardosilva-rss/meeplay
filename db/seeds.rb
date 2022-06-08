@@ -164,8 +164,9 @@ boardgame14 = Boardgame.all.sample
 meeting_ricardo_2 = Meeting.create!(user: ricardo, boardgame: boardgame14, start_date: 20220621,
   start_time: Time.new(2022, 6, 21, 14, 00, 0),
   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-  name: "#{boardgame14.name} evening", chatroom: Chatroom.create!, players_wanted: 2,
-  address: "Berlin, Kudamm"
+  name: "#{boardgame14.name} evening", chatroom: Chatroom.create!,
+  address: "Berlin, Kudamm",
+  players_wanted: rand(boardgame14.min_players..boardgame14.max_players)
 )
 
 boardgame15 = Boardgame.all.sample
