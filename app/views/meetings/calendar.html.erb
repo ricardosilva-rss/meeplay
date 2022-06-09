@@ -7,15 +7,19 @@
         <!-- .group_by { |meeting| meeting.date } -->
 
         <% @meetings.order(:start_date, :start_time).group_by(&:start_date).each do |date, meetings| %>
+
           <div class='calendar-card'>
             <p><%= date.strftime('%A, %d %B %Y')%></p>
               <ul>
                 <% meetings.each do |meeting| %>
-                  <li><%= meeting.start_time.strftime("%H:%M") %> <%= link_to meeting.name, meeting_path(meeting) %></li>
+                  <li><i class="fa-solid fa-calendar calendar_btn calendar-icon"></i>  <%= meeting.start_time.strftime("%H:%M") %> <%= link_to meeting.name, meeting_path(meeting) %></li>
                 <% end %>
               </ul>
           </div>
+
         <% end %>
     </div>
   </div>
 </div>
+
+<%# class="fa-solid fa-calendar calendar_btn" %>

@@ -1,15 +1,12 @@
 <div class="px-4">
-  <h1 class="pb-3"><%=@meeting.name %></h1>
+  <h1 class="pb-3 d-flex justify-content-center"><%=@meeting.name %></h1>
   <div class="px-4">
-    <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.profile.name %></p>
+    <div class="d-flex justify-content-center">
+      <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.profile.name %></p>
+    </div>
 
-    <div class="d-flex justify-content-start">
+    <div class="d-flex justify-content-center">
       <p><%= link_to(boardgame_path(@meeting.boardgame)) do %><%= @meeting.boardgame.name %></p>
-      <% if @meeting.user_is_owner %>
-        <p style="color: #A380BD"><i class="fa fa-solid fa-check px-1"></i><%= '(host owns this boardgame)' %></p>
-      <% else %>
-        <p style="color: #A380BD"><i class="fa-solid fa-xmark-large px-1"></i><%= "(host doesn't own this boardgame)" %></p>
-      <% end %>
     </div>
     <div class="text-center pb-4">
       <%= cl_image_tag @meeting.boardgame.photo.key, width: '75%', class: 'game-photo my-4'%>
@@ -36,7 +33,7 @@
         <p><%= user.email %></p>
       <% end %>
     </div>
-    <div style="width: 100%; height: 100px;"
+    <div style="width: 100%; height: 200px;"
       data-controller="mapbox"
       data-mapbox-markers-value="<%= @marker.to_json %>"
       data-mapbox-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -46,35 +43,35 @@
       <p style="color: #6e6d6d; text-align: left" ><%= @meeting.description%></p>
     </div>
     <% unless @meeting.users.find_by(id: current_user.id).present? || @meeting.full? %>
-      <div class="d-flex justify-content-center py-3">
+      <div class="d-flex justify-content-center py-2">
         <%= simple_form_for [@meeting, @user_meeting] do |f| %>
           <%= f.submit "join", class: "a_btn" %>
         <% end %>
       </div>
     <% end %>
       <% if policy(@meeting).edit? %>
-        <div class="d-flex justify-content-center py-3">
+        <div class="d-flex justify-content-center py-2">
           <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn' %>
         </div>
       <% end %>
       <% if policy(@meeting).destroy? %>
-        <div class="d-flex justify-content-center py-3">
+        <div class="d-flex justify-content-center py-2">
           <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
         </div>
       <% end %>
       <% if @user_meeting.present? %>
         <% if policy(@user_meeting).destroy? && (@meeting.user != current_user) %>
-          <div class="d-flex justify-content-center py-3">
+          <div class="d-flex justify-content-center py-2">
             <%= link_to 'leave meeting', user_meeting_path(@user_meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
           </div>
         <% end %>
       <% end %>
       <% if policy(@meeting.chatroom).show? %>
-        <div class="d-flex justify-content-center py-3">
+        <div class="d-flex justify-content-center py-2">
           <%= link_to 'chat', chatroom_path(@meeting.chatroom), class:'a_btn' %>
         </div>
       <% end %>
-    <div class="d-flex justify-content-center py-3">
+    <div class="d-flex justify-content-center py-2">
       <%= link_to 'back', meetings_path, class:'b_btn' %>
     </div>
   </div>
