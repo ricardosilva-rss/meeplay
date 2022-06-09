@@ -17,11 +17,11 @@
             <h2><%= meeting.name %></h2>
           </div>
           <div class="d-flex justify-content-between">
+            <div class="address ellipsis">
+              <p><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
+            </div>
             <div class="date-and-time ellipsis">
               <p><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
-            </div>
-            <div class="address ellipsis">
-              <p><i class="fa-solid fa-location-dot"></i> <%= meeting.city %></p>
             </div>
           </div>
       </div>
