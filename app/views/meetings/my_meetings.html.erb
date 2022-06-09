@@ -5,14 +5,16 @@
         <%= link_to meeting_path(meeting) do %>
           <div class="card-product">
             <%= cl_image_tag meeting.boardgame.photo.key, width: 96 %>
-            <div class="card-product-infos">
-              <div style="width: 215px"></div>
-                <p class="card-host"><%= render 'shared/small_meeple'%> <span style="padding: 3px"><%= h truncate(meeting.user.profile.name, :length => 50) %></span></p>
-                <h2><%= meeting.boardgame.name %></h2>
-                <div class="d-flex justify-content-between">
-                  <p style="color: #6e6d6d"><i class="fa-solid fa-location-dot"></i> <%= h truncate(meeting.address, :length => 10) %></p>
-                  <p style="color: #6e6d6d"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b %Y') %> <%= meeting.start_time.strftime("%H:%M")%></p>
-                </div>
+            <div class="card-product-infos d-flex flex-column justify-content-between w-100 ellipsis">
+              <div class="meeting-title ellipsis">
+                <h2><%= meeting.name %></h2>
+              </div>
+              <div class="address ellipsis">
+                <p><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
+              </div>
+              <div class="date-and-time ellipsis">
+                <p><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
+              </div>
             </div>
           </div>
         <% end %>
