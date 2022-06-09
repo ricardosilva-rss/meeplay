@@ -2,7 +2,7 @@
   <%= f.input :name, label: "name", input_html: { class: "form-radius" }  %>
   <div data-controller='min-max-players'>
     <%= f.association :boardgame,
-                      selected: boardgame_id,
+                      # selected: boardgame_id,
                       label: "boardgame",
                       input_html: { class: "form-radius", data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} },
                       include_blank: false,
