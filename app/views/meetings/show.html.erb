@@ -51,18 +51,18 @@
     <% end %>
       <% if policy(@meeting).edit? %>
         <div class="d-flex justify-content-center py-2">
-          <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn' %>
+          <%= link_to 'edit', edit_meeting_path(@meeting), class:'b_btn material' %>
         </div>
       <% end %>
       <% if policy(@meeting).destroy? %>
         <div class="d-flex justify-content-center py-2">
-          <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+          <%= link_to 'cancel meeting', meeting_path(@meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn material' %>
         </div>
       <% end %>
       <% if @user_meeting.present? %>
         <% if policy(@user_meeting).destroy? && (@meeting.user != current_user) %>
           <div class="d-flex justify-content-center py-2">
-            <%= link_to 'leave meeting', user_meeting_path(@user_meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn' %>
+            <%= link_to 'leave meeting', user_meeting_path(@user_meeting), method: :delete, data: { confirm: 'Are you sure?' }, class: 'b_btn material' %>
           </div>
         <% end %>
       <% end %>
@@ -72,7 +72,7 @@
         </div>
       <% end %>
     <div class="d-flex justify-content-center py-2">
-      <%= link_to 'back', meetings_path, class:'b_btn' %>
+      <%= link_to 'back', meetings_path, class:'b_btn material' %>
     </div>
   </div>
 </div>
