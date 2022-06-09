@@ -16,11 +16,14 @@ class ApplicationController < ActionController::Base
   private
 
   def skip_pundit?
-
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 
-  def after_sign_in_path_for(resource)
-    meetings_path
+  def after_sign_in_path_for(user)
+    if user.profile.edited_profile == false
+      edit_profile_path(user.profile)
+    else
+      meetings_path
+    end
   end
 end

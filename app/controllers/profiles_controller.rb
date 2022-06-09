@@ -23,7 +23,8 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-    if @profile.update(profile_params)
+    # if profile.name !"Me" && profile.date_of_birth: !Date(2000, 1, 1)
+    if @profile.update(profile_params.merge(edited_profile: true))
       redirect_to profile_path(@profile), notice: 'profile was successfully updated.'
     else
       render :edit
