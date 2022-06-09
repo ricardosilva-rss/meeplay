@@ -21,16 +21,21 @@
                 geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }
       %>
     </div>
-    <%= f.input :players_wanted,
-                label: "total players",
-                collection: ['Choose a game first...'],
-                input_html: { data: { min_max_players_target: 'total'} },
-                include_blank: false,
-                include_hidden: false
-      %>
-  </div>
+    <div class="players_wanted">
+      <%= f.input :players_wanted,
+                  label: "total players",
+                  collection: ['Choose a game first...'],
+                  input_html: { data: { min_max_players_target: 'total'}, class: "form-radius" },
+                  include_blank: false,
+                  include_hidden: false
+        %>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
 
-  <%= f.input :user_is_owner, label: "i own the game"%>
+  </div>
+  <div class="d-flex justify-content-center">
+    <%= f.input :user_is_owner, label: "i own the game"%>
+  </div>
   <%= f.input :description, label: "comments", input_html: { class: "form-radius" } %>
   <div class="btn-container">
     <% if meeting.new_record? %>
