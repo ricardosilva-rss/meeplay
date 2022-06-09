@@ -12,16 +12,16 @@
                         required: true,
                         autofocus: true,
                         label: "email",
-                        input_html: { autocomplete: "email" }%>
+                        input_html: { autocomplete: "email", class: "form-radius" }%>
             <%= f.input :password,
                         required: true,
                         label: "password",
                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                        input_html: { autocomplete: "new-password" } %>
+                        input_html: { autocomplete: "new-password", class: "form-radius" } %>
             <%= f.input :password_confirmation,
                         required: true,
                         label: "password confirmation",
-                        input_html: { autocomplete: "new-password" } %>
+                        input_html: { autocomplete: "new-password", class: "form-radius" } %>
           </div>
           <div class="btn-container">
             <div class="form-actions">

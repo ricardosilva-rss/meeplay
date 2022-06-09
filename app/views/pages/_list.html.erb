@@ -1,26 +1,31 @@
 <div data-search-meetings-target="list">
   <% meetings.each do |meeting| %>
     <%= link_to meeting_path(meeting) do %>
-      <% unless meeting.full? %>
-        <div class="card-product" style="min-height: 120px;">
+      <div class="card-product <%= "darkened-card" if meeting.full? %>" >
         <%= cl_image_tag meeting.boardgame.photo.key, width: 96 %>
-          <div class="card-product-infos d-flex flex-column justify-content-between w-100">
-            <div class="card-host">
+        <div class="card-product-infos d-flex flex-column justify-content-between w-100 ellipsis">
+          <div class="card-host">
+            <% if meeting.full? %>
+              <%= render 'shared/small_gray_meeple' %>
+              <p style="color: #6e6d6d"><%= meeting.user.profile.name.split(" ").first %></p>
+            <% else %>
               <%= render 'shared/small_meeple' %>
-              <p style="color: #A380BD"><%= meeting.user.profile.name%></p>
-            </div>
+              <p style="color: #A380BD"><%= meeting.user.profile.name.split(" ").first %></p>
+            <% end %>
+          </div>
+          <div class="meeting-title ellipsis">
             <h2><%= meeting.name %></h2>
-            <div class="d-flex justify-content-between">
-              <div class="address">
-                <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= meeting.address %></p>
-              </div>
-              <div class="date-and-time">
-                <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
-              </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <div class="address ellipsis">
+              <p><i class="fa-solid fa-location-dot"></i> <%= meeting.address.split(",").first %></p>
+            </div>
+            <div class="date-and-time ellipsis">
+              <p><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b') %> <%= meeting.start_time.strftime("%k:%M")%></p>
             </div>
           </div>
-        </div>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   <% end %>
+<% end %>
 </div>

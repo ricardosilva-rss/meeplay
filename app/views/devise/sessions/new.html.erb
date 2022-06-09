@@ -11,11 +11,11 @@
                         required: false,
                         label: "email",
                         autofocus: true,
-                        input_html: { autocomplete: "email" } %>
+                        input_html: { autocomplete: "email", class: "form-radius" } %>
             <%= f.input :password,
                         required: false,
                         label: "password",
-                        input_html: { autocomplete: "current-password" } %>
+                        input_html: { autocomplete: "current-password", class: "form-radius" } %>
             <%= f.input :remember_me, label: "remember me", as: :boolean if devise_mapping.rememberable? %>
           </div>
 

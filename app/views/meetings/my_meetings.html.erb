@@ -10,8 +10,8 @@
                 <p class="card-host"><%= render 'shared/small_meeple'%> <span style="padding: 3px"><%= h truncate(meeting.user.profile.name, :length => 50) %></span></p>
                 <h2><%= meeting.boardgame.name %></h2>
                 <div class="d-flex justify-content-between">
-                  <p style="color: #BBBBBB"><i class="fa-solid fa-location-dot"></i> <%= h truncate(meeting.address, :length => 10) %></p>
-                  <p style="color: #BBBBBB"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b %Y') %> <%= meeting.start_time.strftime("%H:%M")%></p>
+                  <p style="color: #6e6d6d"><i class="fa-solid fa-location-dot"></i> <%= h truncate(meeting.address, :length => 10) %></p>
+                  <p style="color: #6e6d6d"><i class="fa-solid fa-calendar"></i> <%= meeting.start_date.strftime('%a %d %b %Y') %> <%= meeting.start_time.strftime("%H:%M")%></p>
                 </div>
             </div>
           </div>

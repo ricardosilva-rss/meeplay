@@ -10,6 +10,7 @@ export default class extends Controller {
       { channel: "ChatroomChannel", id: this.chatroomIdValue },
       { received: data =>  this.#insertMessageAndScrollDown(data) }
     )
+    this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight);
   }
 
   resetForm(event) {
@@ -20,9 +21,14 @@ export default class extends Controller {
     this.channel.unsubscribe()
   }
 
+  #insertMessageAndScrollDown({ user, message }) {
+    const myId = parseInt(this.messagesTarget.dataset.userId);
 
-  #insertMessageAndScrollDown(data) {
-    this.messagesTarget.insertAdjacentHTML("beforeend", data)
+    if (parseInt(user) !== myId) {
+      message = message.replace('sent-message', 'received-message');
+    }
+
+    this.messagesTarget.insertAdjacentHTML("beforeend", message)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   }
 }
