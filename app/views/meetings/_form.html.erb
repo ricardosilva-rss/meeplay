@@ -4,9 +4,7 @@
     <%= f.association :boardgame,
                       # selected: boardgame_id,
                       label: "boardgame",
-                      input_html: { class: "form-radius", data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} },
-                      include_blank: false,
-                      include_hidden: false
+                      input_html: { class: "form-radius", data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} }
       %>
 
     <div data-controller='flatpickr'>
