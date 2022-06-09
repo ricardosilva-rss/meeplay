@@ -8,12 +8,12 @@
   <%= f.input :photo, as: :file, label: "photo" %>
   <div class="btn-container">
     <% if profile.new_record? %>
-      <div class="form-actions a_btn">
-        <%= f.button :submit, "create", class: "a_btn" %>
+      <div class="form-actions a_btn material">
+        <%= f.button :submit, "create", class: "a_btn material" %>
       </div>
     <% else %>
-      <div class="form-actions a_btn">
-        <%= f.button :submit, "update", class: "a_btn" %>
+      <div class="form-actions a_btn material">
+        <%= f.button :submit, "update", class: "a_btn material" %>
       </div>
     <% end %>
   </div>

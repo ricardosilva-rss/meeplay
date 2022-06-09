@@ -1,6 +1,6 @@
 <div class="px-4">
   <h1>my boardgames</h1>
-  <%= link_to "add", new_user_boardgame_path, class:"a_btn" %>
+  <%= link_to "add", new_user_boardgame_path, class:"a_btn material" %>
   <% @user_boardgames.each do |user_boardgame| %>
     <%= link_to boardgame_path(user_boardgame.boardgame) do %>
       <div class="card-product">
