@@ -1,0 +1,88 @@
+
+
+.select2.select2-container {
+  background: #FFFFFF;
+  box-shadow: 0px -3px 24px 2px rgba(102, 44, 145, 0.1);
+  border-radius: 40px;
+  border: none;
+
+  padding: 15px 30px;
+}
+
+.select2.select2-container .select2-selection {
+  background: transparent;
+  border-radius: 40px;
+  border: none;
+}
+
+.select2.select2-container .select2-selection .select2-selection__rendered {
+
+}
+
+.select2.select2-container .select2-selection .select2-selection__arrow {
+  background: transparent;
+  border: none;
+
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+.select2-container .select2-dropdown {
+  background: #FFFFFF;
+  border: none;
+}
+
+.select2-container .select2-dropdown .select2-search {
+  border: none;
+}
+
+.select2-container--default .select2-results>.select2-results__options {
+  box-shadow: 0px -3px 24px 2px rgba(102, 44, 145, 0.1);
+}
+
+.mapboxgl-ctrl-geocoder {
+  background: transparent;
+  border: none;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  background: #FFFFFF;
+  box-shadow: 0px -3px 24px 2px rgba(102, 44, 145, 0.1);
+  border-radius: 40px;
+  border: none;
+  padding: 15px 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  height: 54px;
+  padding-left: 50px;
+  font-family: "roboto";
+}
+
+.mapboxgl-ctrl-geocoder--icon {
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mapboxgl-ctrl-geocoder--icon-close {
+  margin-top: 10px !important;
+}
+
+.players_wanted {
+  position: relative;
+
+  .form-select:valid:not([multiple]):not([size]) {
+    background-repeat: no-repeat;
+    background-image: none;
+  }
+
+  i {
+    position: absolute;
+    top: 55px;
+    right: 30px;
+    color: $dark-gray;
+    font-size: x-small;
+  }
+}
