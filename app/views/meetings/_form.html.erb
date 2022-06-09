@@ -1,5 +1,5 @@
 <%= simple_form_for(meeting) do |f| %>
-  <%= f.input :name, label: "name", input_html: { class: "form-radius" }  %>
+  <%= f.input :name, label: "name", input_html: { class: "form-radius mb-0" }  %>
   <div data-controller='min-max-players'>
     <%= f.association :boardgame,
                       selected: boardgame_id,
@@ -10,8 +10,8 @@
       %>
 
     <div data-controller='flatpickr'>
-      <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr form-radius'}%>
-      <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr form-radius'} %>
+      <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr form-radius mb-0'}%>
+      <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr form-radius mb-0'} %>
     </div>
 
     <div data-controller='geocoder'>
@@ -24,7 +24,7 @@
     <%= f.input :players_wanted,
                 label: "total players",
                 collection: ['Choose a game first...'],
-                input_html: { data: { min_max_players_target: 'total'}, class: "form-radius" },
+                input_html: { data: { min_max_players_target: 'total'} },
                 include_blank: false,
                 include_hidden: false
       %>
