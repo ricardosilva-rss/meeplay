@@ -1,8 +1,7 @@
 <div class="px-4">
   <h1 class="pb-3 d-flex justify-content-center"><%=@meeting.name %></h1>
   <div class="px-4">
-    <div class="d-flex justify-content-center">
-      <p><span style="color: #A380BD"><%=render 'shared/small_meeple'%></span> <%= @meeting.user.profile.name %></p>
+    <p><span style="color: #A380BD"></span><%= cl_image_tag @meeting.user.profile.photo.key, class: 'avatar' %>        <%= @meeting.user.profile.name %></p>
     </div>
 
     <div class="d-flex justify-content-center">
@@ -29,9 +28,13 @@
       <% else %>
         <p style="color: #6e6d6d">(Waiting for <%= (@meeting.players_wanted - @meeting.users.count) %>/<%= @meeting.players_wanted %> players)</p>
       <% end %>
+      <div class="d-flex flex-column" style="padding-left: 70px">
       <% @meeting.users.each do |user| %>
-        <p><%= user.email %></p>
+      <div class="">
+        <p style="text-align: left"><%= cl_image_tag user.profile.photo.key, class: 'avatar' %>   <%= user.profile.name %></p>
+       </div>
       <% end %>
+      </div>
     </div>
     <div style="width: 100%; height: 200px;"
       data-controller="mapbox"
