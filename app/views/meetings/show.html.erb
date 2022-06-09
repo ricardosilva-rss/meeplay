@@ -1,8 +1,9 @@
 <div class="px-4">
-  <h1 class="pb-3 d-flex justify-content-center"><%=@meeting.name %></h1>
-  <div class="px-4">
-    <p><span style="color: #A380BD"></span><%= cl_image_tag @meeting.user.profile.photo.key, class: 'avatar' %>        <%= @meeting.user.profile.name %></p>
-    </div>
+  <h1 class="pb-3 d-flex justify-content-center text-center"><%=@meeting.name %></h1>
+  <div class="px-4 text-center">
+    <%= cl_image_tag @meeting.user.profile.photo.key, class:'avatar' %>
+    <p><%= @meeting.user.profile.name %></p>
+  </div>
 
     <div class="d-flex justify-content-center">
       <p><%= link_to(boardgame_path(@meeting.boardgame)) do %><%= @meeting.boardgame.name %></p>
@@ -16,7 +17,7 @@
       <p><i class="fa fa-solid fa-calendar" style="color: #A380BD"></i> <%= @meeting.start_date.strftime('%A, %d %B %Y') %>, <%= @meeting.start_time.strftime("%H:%M")%></p>
       <p><i class="fa fa-solid fa-location-dot" style="color: #A380BD"></i> <%= @meeting.address %></p>
     </div>
-    <div class="text-center">
+    <div class="text-center mb-5">
     <% @meeting.users.count.times do %>
       <%= render 'shared/small_meeple'%>
     <% end %>
@@ -28,11 +29,10 @@
       <% else %>
         <p style="color: #6e6d6d">(Waiting for <%= (@meeting.players_wanted - @meeting.users.count) %>/<%= @meeting.players_wanted %> players)</p>
       <% end %>
-      <div class="d-flex flex-column" style="padding-left: 70px">
+      <div class="text-center">
       <% @meeting.users.each do |user| %>
-      <div class="">
-        <p style="text-align: left"><%= cl_image_tag user.profile.photo.key, class: 'avatar' %>   <%= user.profile.name %></p>
-       </div>
+        <%= cl_image_tag user.profile.photo.key, class: 'avatar' %>
+        <p>   <%= user.profile.name %></p>
       <% end %>
       </div>
     </div>
