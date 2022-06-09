@@ -1,11 +1,17 @@
 <%= simple_form_for(meeting) do |f| %>
-  <%= f.input :name, label: "name"  %>
+  <%= f.input :name, label: "name", input_html: { class: "form-radius" }  %>
   <div data-controller='min-max-players'>
-    <%= f.association :boardgame, selected: boardgame_id, label: "boardgame", input_html: { data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} }, include_blank: false, include_hidden: false %>
+    <%= f.association :boardgame,
+                      selected: boardgame_id,
+                      label: "boardgame",
+                      input_html: { class: "form-radius", data: { min_max_players_target: 'name', action: "change->min-max-players#updatePlayers"} },
+                      include_blank: false,
+                      include_hidden: false
+      %>
 
     <div data-controller='flatpickr'>
-      <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr'} %>
-      <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr'} %>
+      <%= f.input :start_date, label: "date", as: :string, input_html: {class:'datepickr form-radius'}%>
+      <%= f.input :start_time, label: "time", as: :string, input_html: {class:'timepickr form-radius'} %>
     </div>
 
     <div data-controller='geocoder'>
@@ -15,11 +21,17 @@
                 geocoder_api_key_value: ENV['MAPBOX_API_KEY'] } }
       %>
     </div>
-    <%= f.input :players_wanted, label: "total players", collection: ['Choose a game first...'], input_html: { data: { min_max_players_target: 'total'} }, include_blank: false, include_hidden: false %>
+    <%= f.input :players_wanted,
+                label: "total players",
+                collection: ['Choose a game first...'],
+                input_html: { data: { min_max_players_target: 'total'}, class: "form-radius" },
+                include_blank: false,
+                include_hidden: false
+      %>
   </div>
 
   <%= f.input :user_is_owner, label: "i own the game"%>
-  <%= f.input :description, label: "comments" %>
+  <%= f.input :description, label: "comments", input_html: { class: "form-radius" } %>
   <div class="btn-container">
     <% if meeting.new_record? %>
       <div class="form-actions a_btn">
