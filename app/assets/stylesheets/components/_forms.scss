@@ -73,6 +73,11 @@
 .players_wanted {
   position: relative;
 
+  .form-select:valid:not([multiple]):not([size]) {
+    background-repeat: no-repeat;
+    background-image: none;
+  }
+
   i {
     position: absolute;
     top: 55px;
