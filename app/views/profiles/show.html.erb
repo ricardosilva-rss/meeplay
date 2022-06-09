@@ -1,9 +1,22 @@
-<h1>Profile</h1>
+<div class="px-4">
+  <div class="row justify-content-center">
+    <div class='d-flex align-items-center flex-column'>
+      <div>
+        <h1>profile</h1>
+      </div>
+      <div class='text-center'>
+        <h2><%= @profile.name %></h2>
+        <div>
+          <%= cl_image_tag @profile.photo.key, width: 200, class:'avatar-profile' %>
+        </div>
+        <p><%= @profile.date_of_birth %></p>
+        <p><%= @profile.description %></p>
+        <p><%= @profile.bgg_profile %></p>
 
-<h2><%= @profile.name %></h2>
-<%= cl_image_tag @profile.photo.key, width: 200 %>
-<p><%= @profile.date_of_birth %></p>
-<p><%= @profile.description %></p>
-<p><%= @profile.bgg_profile %></p>
-
-<%= link_to "edit", edit_profile_path(@profile), class:'a_btn material' %>
+        <div class='d-flex justify-content-center'>
+          <%= link_to "edit", edit_profile_path(@profile), class:'a_btn material' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
