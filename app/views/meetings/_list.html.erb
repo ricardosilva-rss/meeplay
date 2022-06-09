@@ -7,10 +7,10 @@
           <div class="card-host">
             <% if meeting.full? %>
               <%= render 'shared/small_gray_meeple' %>
-              <p style="color: #6e6d6d"><%= meeting.user.profile.name%></p>
+              <p style="color: #6e6d6d"><%= meeting.user.profile.name.split(" ").first %></p>
             <% else %>
               <%= render 'shared/small_meeple' %>
-              <p style="color: #A380BD"><%= meeting.user.profile.name%></p>
+              <p style="color: #A380BD"><%= meeting.user.profile.name.split(" ").first %></p>
             <% end %>
           </div>
           <div class="meeting-title ellipsis">
