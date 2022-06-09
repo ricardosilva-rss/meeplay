@@ -1,17 +1,17 @@
 <div id="banner">
   <h2>find people. meet. play.</h2>
+  <div class="container-btn">
+    <div>
+      <%= link_to 'start now', new_user_session_path, class: 'a_btn' %>
+    </div>
+  </div>
 </div>
 <div class="container-meeplay">
   <%# <%= image_tag "/assets/MEEplay.png", width:300 %>
   <%= render 'partials/logo_landingpage' %>
 </div>
 <div class="container-catch-frase">
-  <p>Do you want to play your favourite boardgame but you're missing a player or two? With meeplay you can look for other players in your area and meet with then. Play away!</p>
-</div>
-<div class="container-btn">
-  <div>
-    <%= link_to 'start now', new_user_session_path, class: 'a_btn' %>
-  </div>
+  <p>Missing players for your favourite boardgame? With MEEplay, we play!</p>
 </div>
 <div class="px-4" data-controller="search-meetings">
 
