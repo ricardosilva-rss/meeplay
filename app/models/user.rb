@@ -18,7 +18,6 @@ class User < ApplicationRecord
 
   def create_profile_for_user
     profile = Profile.create(user: self, name: "Player", date_of_birth: Date.new(2000, 1, 1))
-    file4 = URI.open('https://avatars.githubusercontent.com/u/97455167?v=4')
-    profile.photo.attach(io: file4, filename: 'ricardo.jpg', content_type: 'image/jpg')
+    profile.photo.attach(io: File.open('app/assets/images/profile_default.jpg'), filename: 'profile_default.jpg', content_type: 'image/jpg')
   end
 end
