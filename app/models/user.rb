@@ -14,8 +14,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   after_create :create_profile_for_user
 
+  private
+
   def create_profile_for_user
-    profile = Profile.create(user: self, name: "Me", date_of_birth: Date.new(2000, 1, 1))
+    profile = Profile.create(user: self, name: "Player", date_of_birth: Date.new(2000, 1, 1))
     file4 = URI.open('https://avatars.githubusercontent.com/u/97455167?v=4')
     profile.photo.attach(io: file4, filename: 'ricardo.jpg', content_type: 'image/jpg')
   end
