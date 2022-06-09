@@ -4,64 +4,66 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Roboto:wght@300&display=swap');
+
+
+    h1 {
+  font-family: 'Comfortaa', arial;
+  font-size: 1rem * 2;
+  color: #47255F;
+}
+
+h2 {
+  font-family: 'Comfortaa', arial;
+  font-size: 1rem * 1.2;
+}
+
+p{
+  font-size: 1rem * 2;
+}
+
+body {
+  background: linear-gradient(180deg, #F5F2F8 0%, #FFFFFF 100%);
+  font-family: 'Roboto', sans-serif;
+
+  height: auto;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+body a {
+  text-decoration: none;
+  color: #A380BD;
+
+  &:hover {
+    text-decoration: none;
+    color: #A380BD;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  &:active {
+    color: #47255F;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  #meeple {
+    width: 100px;
+    height: 100px;
   }
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
   <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+    <div style="text-align: center; padding-top: 15vh;">
+      <p style="font-size: 1.5rem; padding: 0 15px;">something went wrong...</p>
+        <h1>are you lost and alone? </h1>
+        <img src="images/sad_meeple.png" alt="" style="width: 250px">
+        <p style="font-size: 1.5rem; padding: 0 15px;">go back to meeplay and find friends with whom to play your favorite boardgame!</p>
+        <a href="https://www.meeplay.xyz" style="font-size: 2rem;">back to meeplay!</a>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
 </body>
 </html>
