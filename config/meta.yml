@@ -1,0 +1,5 @@
+meta_product_name: "meeplay"
+meta_title: "meeplay - find people. meet. play."
+meta_description: "Missing players for your favourite boardgame? With MEEplay, we play!"
+meta_image: "/Users/ricardosilva/code/ricardosilva-rss/meeplay/app/assets/images/meta_photo.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
