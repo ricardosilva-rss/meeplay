@@ -33,12 +33,10 @@ class MeetingsController < ApplicationController
 
     @user_meeting = UserMeeting.new unless @user_meeting.present?
 
-    @marker = @meeting.geocode.map do
-      {
-        lat: @meeting.latitude,
-        lng: @meeting.longitude
-      }
-    end
+    @marker = [{
+      lat: @meeting.latitude,
+      lng: @meeting.longitude
+      }]
   end
 
   def new
@@ -73,7 +71,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-    redirect_to meetings_path, notice: "#{@meeting.name} was successfully canceled."
+    redirect_to my_meetings_path, notice: "#{@meeting.name} was successfully canceled."
   end
 
   def my_meetings
