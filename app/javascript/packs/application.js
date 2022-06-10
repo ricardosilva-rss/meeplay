@@ -6,15 +6,15 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
+import "controllers"
 import "channels"
 import 'select2/dist/css/select2.min.css';
+import "bootstrap"
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "controllers"
-import "bootstrap"
 import { setupRipple } from '../components/ripple';
 
 document.addEventListener('DOMContentLoaded', () => {
