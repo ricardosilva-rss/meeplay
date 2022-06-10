@@ -16,7 +16,7 @@
     object-position: top;
     }
 
-  &:active {
+  &:active, &:focus {
     filter: opacity(0.5);
     box-shadow: 0px -3px 24px 2px rgba(102, 44, 145, 0.8);
   }

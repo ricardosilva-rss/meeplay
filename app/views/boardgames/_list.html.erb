@@ -1,27 +1,27 @@
 <div data-search-boardgames-target="list">
   <% boardgames.each do |boardgame| %>
       <%= link_to boardgame_path(boardgame) do %>
-        <div class="card-product">
+        <div class="card-product ">
           <%= cl_image_tag boardgame.photo.key, width: 96 %>
           <div class="card-product-infos d-flex flex-column justify-content-between w-100">
-            <h2><%= boardgame.name %></h2>
+            <h2 class="ellipsis"><%= boardgame.name %></h2>
             <div class="boardgame-padding">
               <div class="d-flex justify-content-between">
                 <p style="color: #A380BD"><i class="fa-solid fa-users"></i>
                   <% if boardgame.min_players != boardgame.max_players %>
-                    <%= boardgame.min_players %> - <%= boardgame.max_players %>
+                    <%= boardgame.min_players %>-<%= boardgame.max_players %>
                   <% else %>
                     <%= boardgame.max_players %>
-                  <% end %> players </p>
+                  <% end %></p>
                 <p style="color: #A380BD"><i class="fa-solid fa-star"></i> <%= boardgame.rating.round(1) %>/10</p>
               </div>
               <div class="d-flex justify-content-between">
                 <p style="color: #A380BD"><i class="fa-solid fa-clock"></i>
                   <% if boardgame.min_time != boardgame.max_time %>
-                    <%= boardgame.min_time %> - <%= boardgame.max_time %>
+                    <%= boardgame.min_time %>-<%= boardgame.max_time %>
                   <% else %>
                     <%= boardgame.min_time %>
-                  <% end %> min </p>
+                  <% end %> </p>
                 <p style="color: #A380BD"><i class="fa-solid fa-gears"></i> <%= boardgame.complexity.round(1) %>/5</p>
               </div>
             </div>

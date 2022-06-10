@@ -1,32 +1,32 @@
 <div class="px-4">
   <h1>my boardgames</h1>
-  <%= link_to "add", new_user_boardgame_path, class:"a_btn material" %>
+  <%= link_to "add", new_user_boardgame_path, class:"a_btn" %>
   <% @user_boardgames.each do |user_boardgame| %>
     <%= link_to boardgame_path(user_boardgame.boardgame) do %>
       <div class="card-product">
         <%= cl_image_tag user_boardgame.boardgame.photo.key, width: 96 %>
         <div class="card-product-infos d-flex flex-column justify-content-between w-100">
             <h2><%= user_boardgame.boardgame.name %></h2>
+              <%= link_to "remove", user_boardgame_path(user_boardgame), method: :delete, data: { confirm: 'Are you sure?' } %>
             <div class="boardgame-padding">
               <div class="d-flex justify-content-between">
                 <p style="color: #A380BD"><i class="fa-solid fa-users"></i>
                   <% if user_boardgame.boardgame.min_players != user_boardgame.boardgame.max_players %>
-                    <%= user_boardgame.boardgame.min_players %> - <%= user_boardgame.boardgame.max_players %>
+                    <%= user_boardgame.boardgame.min_players %>-<%= user_boardgame.boardgame.max_players %>
                   <% else %>
                     <%= user_boardgame.boardgame.max_players %>
-                  <% end %> players </p>
+                  <% end %></p>
                 <p style="color: #A380BD"><i class="fa-solid fa-star"></i> <%= user_boardgame.boardgame.rating.round(1) %>/10</p>
               </div>
               <div class="d-flex justify-content-between">
                 <p style="color: #A380BD"><i class="fa-solid fa-clock"></i>
                   <% if user_boardgame.boardgame.min_time != user_boardgame.boardgame.max_time %>
-                    <%= user_boardgame.boardgame.min_time %> - <%= user_boardgame.boardgame.max_time %>
+                    <%= user_boardgame.boardgame.min_time %>-<%= user_boardgame.boardgame.max_time %>
                   <% else %>
                     <%= user_boardgame.boardgame.min_time %>
-                  <% end %> min </p>
+                  <% end %></p>
                 <p style="color: #A380BD"><i class="fa-solid fa-gears"></i> <%= user_boardgame.boardgame.complexity.round(1) %>/5</p>
               </div>
-              <%= link_to "remove", user_boardgame_path(user_boardgame), method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
         </div>
       </div>

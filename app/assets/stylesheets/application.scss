@@ -53,3 +53,9 @@ body a {
     color: $dark-purple;
   }
 }
+
+
+* {
+  -webkit-tap-highlight-color: transparentize($dark-purple, .5);
+  -moz-tap-highlight-color: transparentize($dark-purple, .5);
+}

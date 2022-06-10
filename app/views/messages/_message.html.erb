@@ -1,4 +1,4 @@
-<div id="message-<%= message.id %>" class="message mb-1 <%=  message.user == current_user ? 'sent-message' : 'received-message' %>">
+<div id="message-<%= message.id %>" class="message mb-3 <%=  message.user == current_user ? 'sent-message' : 'received-message' %>">
   <%= cl_image_tag message.user.profile.photo.key, width: 50, class:'avatar me-2' %>
   <p>
     <%= message.content %>

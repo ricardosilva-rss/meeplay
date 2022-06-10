@@ -37,12 +37,12 @@
   <%= f.input :description, label: "comments", input_html: { class: "form-radius" } %>
   <div class="btn-container">
     <% if meeting.new_record? %>
-      <div class="form-actions a_btn material">
-        <%= f.button :submit, "create", class: "a_btn material" %>
+      <div class="form-actions a_btn">
+        <%= f.button :submit, "create", class: "a_btn" %>
       </div>
     <% else %>
-      <div class="form-actions a_btn material">
-        <%= f.button :submit, "update", class: "a_btn material" %>
+      <div class="form-actions a_btn">
+        <%= f.button :submit, "update", class: "a_btn" %>
       </div>
     <% end %>
   </div>

@@ -18,5 +18,5 @@ import "bootstrap"
 import { setupRipple } from '../components/ripple';
 
 document.addEventListener('DOMContentLoaded', () => {
-  setupRipple();
+  //setupRipple();
 });
