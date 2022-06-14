@@ -1,5 +1,5 @@
 
-![Logo](https://res.cloudinary.com/dn5tbyplt/image/upload/c_scale,h_255/v1655224915/MEEplay_gk62ed.png)
+![Logo](https://res.cloudinary.com/dn5tbyplt/image/upload/v1655233679/logogithub_jxvxaj.png)
 
 
 # MEEplay
